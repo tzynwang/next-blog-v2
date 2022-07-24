@@ -17,13 +17,12 @@ export function getPostData(contents: string) {
 
 export function getPostsList() {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+  const folderNames = fs.readdirSync(postsDirectory);
+  const allPostsData = folderNames.map((folderName) => {
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, '');
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
+    const fullPath = path.join(postsDirectory, `${folderName}/index.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // Use gray-matter to parse the post metadata section
@@ -33,8 +32,7 @@ export function getPostsList() {
 
     // Combine the data with the id
     return {
-      id,
-      ...typedMatterResult,
+      id: folderName,
       title: typedMatterResult.title,
       date: typedMatterResult.date,
       category: typedMatterResult.category.join(','),
