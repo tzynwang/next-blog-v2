@@ -14,20 +14,25 @@ const postsDirectory = path.join(process.cwd(), 'post');
 export function getPostData(contents: string) {
   const renderer = {
     heading(text: string, level: number) {
-      const className = `${text.toLowerCase().split(' ').join('-')}`;
-      return `
-              <h${level} class="h${level}-custom-class ${className}">
-                ${text}
-              </h${level}>`;
+      return `<h${level} class="text-${4 - level}xl">${text}</h${level}>`;
     },
     image(href: string, title: string, altText: string) {
       return `<img src="${href}" alt="${altText}" class="img-custom-class">`;
+    },
+    link(href: string, title: string, text: string) {
+      return `<a href="${href}" target="_blank" class="underline">${text}</a>`;
+    },
+    list(body: string, ordered: boolean) {
+      if (ordered) {
+        return `<ol class="list-decimal list-inside">${body}</ol>`;
+      }
+      return `<ul class="list-disc list-inside">${body}</ul>`;
     },
     paragraph(text: string) {
       if (text.startsWith('<img')) {
         return `<div class="img-container-custom-class">${text}</div>`;
       }
-      return `<p>${text}</p>`;
+      return `<p class="text-base">${text}</p>`;
     },
   };
   marked.use({ renderer });

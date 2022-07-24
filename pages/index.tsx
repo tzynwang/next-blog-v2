@@ -16,10 +16,13 @@ function Home(props: HomeProps): React.ReactElement {
     <React.Fragment>
       {allPostsData.map(({ id, date, title, category, htmlContent }) => (
         <React.Fragment key={id}>
-          <div>title: {title}</div>
-          <div>date: {date}</div>
-          <div>category: {category}</div>
-          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+          <div className="text-xl">title: {title}</div>
+          <div className="text-xl">date: {date}</div>
+          <div className="text-xl">category: {category}</div>
+          <div
+            className="postContentWrapper"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
         </React.Fragment>
       ))}
     </React.Fragment>
