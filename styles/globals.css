@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.postContentWrapper h1 {
+  @apply text-3xl;
+}
+
+.postContentWrapper h2 {
+  @apply text-2xl;
+}
+
+.postContentWrapper h3 {
+  @apply text-xl;
+}
+
+.postContentWrapper p {
+  @apply text-base;
+}
+
+.postContentWrapper ol {
+  @apply list-decimal list-inside;
+}
+
+.postContentWrapper ul {
+  @apply list-disc list-inside;
+}
+
+.postContentWrapper a {
+  @apply underline;
+}
+
+.postContentWrapper blockquote {
+  @apply border-l;
+}
