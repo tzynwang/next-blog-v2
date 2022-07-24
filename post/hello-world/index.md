@@ -10,15 +10,15 @@ category: ['md', 'hello', 'world']
 
 ## How To Use The Demo
 
-1. Type in stuff on the left.
-2. See the live updates on the right.
+- Type in stuff on the left.
+- See the live updates on the right.
 
 That's it.  Pretty simple.  There's also a drop-down option in the upper right to switch between various views:
 
-- **Preview:**  A live display of the generated HTML as it would render in a browser.
-- **HTML Source:**  The generated HTML before your browser makes it pretty.
-- **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
-- **Quick Reference:**  A brief run-down of how to format things using markdown.
+1. **Preview:**  A live display of the generated HTML as it would render in a browser.
+2. **HTML Source:**  The generated HTML before your browser makes it pretty.
+3. **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
+4. **Quick Reference:**  A brief run-down of how to format things using markdown.
 
 ## Why Markdown?
 
@@ -38,12 +38,14 @@ clear everything with a simple click.
 - Marked: https://github.com/markedjs/marked/
 - Markdown: http://daringfireball.net/projects/markdown/
 - [google](https://www.google.com)
+  - [google doodles](https://www.google.com/doodles)
 - [facebook](https://www.facebook.com)
+  - [react](https://reactjs.org/)
 
-## iframe test
+<!-- ## iframe test
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cAmRG-GWMhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## script test
 
-<script src="https://gist.github.com/tzynwang/fd1bcbd91bfe5216b06bcb6c4e48b789.js"></script>
+<script src="https://gist.github.com/tzynwang/fd1bcbd91bfe5216b06bcb6c4e48b789.js"></script> -->
