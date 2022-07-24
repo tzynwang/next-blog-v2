@@ -1,13 +1,13 @@
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
+import path from 'path';
 import { marked } from 'marked';
 
-interface MatterResultI {
+type MatterResult = {
   title: string;
   date: string;
   category: string[];
-}
+};
 
 const postsDirectory = path.join(process.cwd(), 'post');
 
@@ -28,7 +28,7 @@ export function getPostsList() {
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
-    const typedMatterResult = matterResult.data as MatterResultI;
+    const typedMatterResult = matterResult.data as MatterResult;
     const htmlContent = getPostData(matterResult.content);
 
     // Combine the data with the id

@@ -1,17 +1,16 @@
 import React, { memo } from 'react';
 import { getPostsList } from '@Lib/post';
-import type { AllPostsData } from './types';
+import type { HomeProps } from './types';
 
 export function getStaticProps() {
   const allPostsData = getPostsList();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
+  return { props: { allPostsData } };
 }
 
-function Home({ allPostsData }: { allPostsData: AllPostsData }) {
+function Home(props: HomeProps): React.ReactElement {
+  /* States */
+  const { allPostsData } = props;
+
   /* Main */
   return (
     <React.Fragment>

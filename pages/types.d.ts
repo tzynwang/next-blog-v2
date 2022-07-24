@@ -1,15 +1,13 @@
-import type { NextPage } from 'next';
-
-export type AllPostsData = {
-  htmlContent: string;
+export type PostData = {
+  id: string;
   title: string;
   date: string;
   category: string;
-  id: string;
-}[];
-
-export type HomeProps = {
-  allPostsDate: AllPostsData;
+  htmlContent: string;
 };
 
-export { NextPage };
+export type AllPostsData = Array<PostData>;
+
+export type HomeProps = {
+  allPostsData: AllPostsData;
+};
