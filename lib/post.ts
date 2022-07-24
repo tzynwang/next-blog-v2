@@ -12,6 +12,25 @@ type MatterResult = {
 const postsDirectory = path.join(process.cwd(), 'post');
 
 export function getPostData(contents: string) {
+  const renderer = {
+    heading(text: string, level: number) {
+      const className = `${text.toLowerCase().split(' ').join('-')}`;
+      return `
+              <h${level} class="h${level}-custom-class ${className}">
+                ${text}
+              </h${level}>`;
+    },
+    image(href: string, title: string, altText: string) {
+      return `<img src="${href}" alt="${altText}" class="img-custom-class">`;
+    },
+    paragraph(text: string) {
+      if (text.startsWith('<img')) {
+        return `<div class="img-container-custom-class">${text}</div>`;
+      }
+      return `<p>${text}</p>`;
+    },
+  };
+  marked.use({ renderer });
   return marked.parse(contents);
 }
 
