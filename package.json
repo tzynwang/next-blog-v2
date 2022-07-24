@@ -1,7 +1,8 @@
 {
   "name": "next-md-to-html",
-  "version": "0.1.0",
+  "version": "0.0.1-beta.1",
   "private": true,
+  "author": "Charlie (Tzu Yin)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
