@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
@@ -5,8 +6,13 @@ import { marked } from 'marked';
 
 type MatterResult = {
   title: string;
-  date: string;
+  date: Date;
   category: string[];
+};
+
+type Post = MatterResult & {
+  id: string;
+  htmlContent: string;
 };
 
 const postsDirectory = path.join(process.cwd(), 'post');
@@ -49,6 +55,13 @@ export function getPostData(contents: string) {
   return marked.parse(contents);
 }
 
+export function sortPostByDate(raw: Post[]) {
+  // INFO: new post to old post
+  return raw.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+}
+
 export function getPostsList() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
@@ -76,5 +89,8 @@ export function getPostsList() {
   });
 
   // Return result
-  return allPostsData;
+  return sortPostByDate(allPostsData).map((post) => ({
+    ...post,
+    date: dayjs(post.date).format('YYYY-MM-DD'),
+  }));
 }
