@@ -10,3 +10,4 @@
 - put asset files into `root/public`
 - use `@apply` to apply `tailwindcss` classes
 - sort posts by date from new to old
+- add `new` script to package.json
