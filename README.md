@@ -8,4 +8,4 @@
 
 - run `nvm use` after opening project from terminal
 - put asset files into `root/public`
-- seems like `marked` doesn't render nested list correctly?
+- use `@apply` to apply `tailwindcss` classes
