@@ -2,20 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.postContentWrapper {
+  @apply text-base mb-4;
+  color: hsl(var(--nc));
+}
+
 .postContentWrapper h1 {
-  @apply text-3xl;
+  @apply text-3xl my-3;
+  color: hsl(var(--p));
 }
 
 .postContentWrapper h2 {
-  @apply text-2xl;
+  @apply text-2xl my-2;
+  color: hsl(var(--p));
 }
 
 .postContentWrapper h3 {
-  @apply text-xl;
-}
-
-.postContentWrapper p {
-  @apply text-base;
+  @apply text-xl my-1;
+  color: hsl(var(--p));
 }
 
 .postContentWrapper ol {
@@ -26,10 +30,20 @@
   @apply list-disc list-inside;
 }
 
+.postContentWrapper li > ul,
+.postContentWrapper li > ol {
+  @apply ml-4;
+}
+
 .postContentWrapper a {
   @apply underline;
+  color: hsl(var(--in));
 }
 
 .postContentWrapper blockquote {
-  @apply border-l;
+  @apply p-4;
+}
+
+.postContentWrapper blockquote > p {
+  @apply border-l-4 pl-2;
 }
