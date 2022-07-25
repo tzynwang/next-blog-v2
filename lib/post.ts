@@ -14,25 +14,35 @@ const postsDirectory = path.join(process.cwd(), 'post');
 export function getPostData(contents: string) {
   const renderer = {
     heading(text: string, level: number) {
-      return `<h${level} class="text-${4 - level}xl">${text}</h${level}>`;
+      return `<h${level}>${text}</h${level}>`;
     },
-    image(href: string, title: string, altText: string) {
-      return `<img src="${href}" alt="${altText}" class="img-custom-class">`;
+    hr() {
+      return '';
     },
-    link(href: string, title: string, text: string) {
+    image(href: string, _title: string, altText: string) {
+      return `<img src="${href}" alt="${altText}">`;
+    },
+    link(href: string, _title: string, text: string) {
       return `<a href="${href}" target="_blank" class="underline">${text}</a>`;
     },
     list(body: string, ordered: boolean) {
       if (ordered) {
-        return `<ol class="list-decimal list-inside">${body}</ol>`;
+        return `<ol>${body}</ol>`;
       }
-      return `<ul class="list-disc list-inside">${body}</ul>`;
+      return `<ul>${body}</ul>`;
     },
     paragraph(text: string) {
-      if (text.startsWith('<img')) {
-        return `<div class="img-container-custom-class">${text}</div>`;
+      if (
+        text.includes('title') &&
+        text.includes('date') &&
+        text.includes('category')
+      ) {
+        return '';
       }
-      return `<p class="text-base">${text}</p>`;
+      if (text.startsWith('<img')) {
+        return text;
+      }
+      return `<p>${text}</p>`;
     },
   };
   marked.use({ renderer });
@@ -48,11 +58,11 @@ export function getPostsList() {
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, `${folderName}/index.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const htmlContent = getPostData(fileContents);
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
     const typedMatterResult = matterResult.data as MatterResult;
-    const htmlContent = getPostData(matterResult.content);
 
     // Combine the data with the id
     return {
