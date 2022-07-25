@@ -70,7 +70,7 @@ export function getPostsList() {
       id,
       title: typedMatterResult.title,
       date: typedMatterResult.date,
-      category: typedMatterResult.category.join(','),
+      category: typedMatterResult.category.sort(),
       htmlContent,
     };
   });
