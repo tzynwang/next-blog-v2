@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 .postContentWrapper {
-  @apply text-base mb-4;
-  color: hsl(var(--nc));
+  @apply text-base mt-2 mb-6;
+  color: hsl(var(--bc));
 }
 
 .postContentWrapper h1 {

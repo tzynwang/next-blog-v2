@@ -51,12 +51,13 @@ export function getPostData(contents: string) {
 
 export function getPostsList() {
   // Get file names under /posts
-  const folderNames = fs.readdirSync(postsDirectory);
-  const allPostsData = folderNames.map((folderName) => {
+  const fileNames = fs.readdirSync(postsDirectory);
+  const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
+    const id = fileName.replace('.md', '');
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, `${folderName}/index.md`);
+    const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const htmlContent = getPostData(fileContents);
 
@@ -66,10 +67,10 @@ export function getPostsList() {
 
     // Combine the data with the id
     return {
-      id: folderName,
+      id,
       title: typedMatterResult.title,
       date: typedMatterResult.date,
-      category: typedMatterResult.category.join(','),
+      category: typedMatterResult.category.sort(),
       htmlContent,
     };
   });
