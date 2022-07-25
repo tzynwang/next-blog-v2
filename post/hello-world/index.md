@@ -18,6 +18,9 @@ That's it.  Pretty simple.  There's also a drop-down option in the upper right t
 1. **Preview:**  A live display of the generated HTML as it would render in a browser.
 2. **HTML Source:**  The generated HTML before your browser makes it pretty.
 3. **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
+   1. number list
+   2. number list
+   3. number list
 4. **Quick Reference:**  A brief run-down of how to format things using markdown.
 
 ## Why Markdown?
