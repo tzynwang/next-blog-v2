@@ -1,26 +1,49 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.postContentWrapper {
+  @apply text-base mt-2 mb-6;
+  color: hsl(var(--bc));
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.postContentWrapper h1 {
+  @apply text-3xl my-3;
+  color: hsl(var(--p));
 }
 
-* {
-  box-sizing: border-box;
+.postContentWrapper h2 {
+  @apply text-2xl my-2;
+  color: hsl(var(--p));
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.postContentWrapper h3 {
+  @apply text-xl my-1;
+  color: hsl(var(--p));
+}
+
+.postContentWrapper ol {
+  @apply list-decimal list-inside;
+}
+
+.postContentWrapper ul {
+  @apply list-disc list-inside;
+}
+
+.postContentWrapper li > ul,
+.postContentWrapper li > ol {
+  @apply ml-4;
+}
+
+.postContentWrapper a {
+  @apply underline;
+  color: hsl(var(--in));
+}
+
+.postContentWrapper blockquote {
+  @apply p-4;
+}
+
+.postContentWrapper blockquote > p {
+  @apply border-l-4 pl-2;
 }

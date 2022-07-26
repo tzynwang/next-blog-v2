@@ -1,10 +1,8 @@
 ---
 title: 'hello again'
-date: '2022-07-24'
+date: 2022-06-18 10:00:44
 category: ['asset']
 ---
-
-# Hello again
 
 This is a fox.
 
