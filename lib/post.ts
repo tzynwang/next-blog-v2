@@ -94,3 +94,31 @@ export function getPostsList() {
     date: dayjs(post.date).format('YYYY-MM-DD'),
   }));
 }
+
+export function getPostsYearAndTitle() {
+  // Get file names under /posts
+  const fileNames = fs.readdirSync(postsDirectory);
+  const allPostsYearAndTitle = fileNames.map((fileName) => {
+    // Remove ".md" from file name to get id
+    const id = fileName.replace('.md', '');
+
+    // Read markdown file as string
+    const fullPath = path.join(postsDirectory, `${id}.md`);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+    // Use gray-matter to parse the post metadata section
+    const matterResult = matter(fileContents);
+
+    // Combine the data with the id
+    return {
+      id,
+      date: matterResult.data.date as Date,
+      category: matterResult.data.category as string[],
+    };
+  });
+
+  // Return result
+  return allPostsYearAndTitle
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map((p) => ({ ...p, date: dayjs(p.date).format('YYYY') }));
+}
