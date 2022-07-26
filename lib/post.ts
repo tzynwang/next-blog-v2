@@ -17,6 +17,18 @@ type Post = MatterResult & {
 
 const postsDirectory = path.join(process.cwd(), 'post');
 
+export function getContentById(id: string) {
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  return getPostData(fileContents);
+}
+
+export function getTitleById(id: string) {
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  return matter(fileContents).data.title as string;
+}
+
 export function getPostData(contents: string) {
   const renderer = {
     heading(text: string, level: number) {
