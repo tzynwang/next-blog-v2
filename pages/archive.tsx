@@ -1,13 +1,18 @@
 import Link from 'next/link';
+import React from 'react';
 import { getPostsYearAndTitle } from '@Lib/post';
 
-export default function Post({
-  allPostsYearAndTitle,
-}: {
-  allPostsYearAndTitle: { id: string; date: string; category: string[] }[];
-}) {
+interface ArchivePageProps {
+  allPostsYearAndTitle: Array<{ id: string; date: string; category: string[] }>;
+}
+
+export default function ArchivePage(props: ArchivePageProps) {
+  /* States */
+  const { allPostsYearAndTitle } = props;
+
+  /* Main */
   return (
-    <div>
+    <React.Fragment>
       <h1 className="text-3xl">All posts</h1>
       <ul>
         {allPostsYearAndTitle.map(({ id, date, category }) => (
@@ -31,7 +36,7 @@ export default function Post({
           </li>
         ))}
       </ul>
-    </div>
+    </React.Fragment>
   );
 }
 
