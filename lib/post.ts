@@ -18,13 +18,13 @@ type Post = MatterResult & {
 const postsDirectory = path.join(process.cwd(), 'post');
 
 export function getContentById(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fullPath = path.join(postsDirectory, `${id}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   return getPostData(fileContents);
 }
 
 export function getTitleById(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fullPath = path.join(postsDirectory, `${id}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   return matter(fileContents).data.title as string;
 }
@@ -78,11 +78,11 @@ export function getPostsList() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace('.md', '');
+    // Remove ".mdx" from file name to get id
+    const id = fileName.replace('.mdx', '');
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, `${id}.md`);
+    const fullPath = path.join(postsDirectory, `${id}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const htmlContent = getPostData(fileContents);
 
@@ -111,11 +111,11 @@ export function getPostsYearAndTitle() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsYearAndTitle = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace('.md', '');
+    // Remove ".mdx" from file name to get id
+    const id = fileName.replace('.mdx', '');
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, `${id}.md`);
+    const fullPath = path.join(postsDirectory, `${id}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // Use gray-matter to parse the post metadata section
