@@ -11,7 +11,11 @@
     "new": "make new"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@mdx-js/loader": "^2.2.1",
+    "@mui/material": "^5.11.7",
+    "@mui/styles": "^5.11.7",
     "autoprefixer": "^10.4.7",
     "daisyui": "^2.20.0",
     "dayjs": "^1.11.4",
