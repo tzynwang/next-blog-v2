@@ -1,13 +1,18 @@
-const path = require('path');
+const alias = require('./config/alias');
+const mdxRules = require('./config/mdxRules');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   reactStrictMode: true,
   swcMinify: true,
-  webpack: (config) => {
+  webpack: (config, options) => {
+    config.module.rules.push({
+      ...mdxRules(options),
+    });
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@Lib': path.resolve(__dirname, '..', './lib'),
+      ...alias,
     };
     return config;
   },
