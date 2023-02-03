@@ -4,12 +4,11 @@
   "private": true,
   "author": "Charlie (Tzu Yin)",
   "scripts": {
-    "predev": "rm -rf .next",
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
-    "lint": "next lint",
-    "new": "sh ./script/new.sh"
+    "dev": "make dev",
+    "build": "make build",
+    "preview": "make preview",
+    "lint": "make lint",
+    "new": "make new"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.2.1",
