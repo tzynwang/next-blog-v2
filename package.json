@@ -12,6 +12,7 @@
     "new": "sh ./script/new.sh"
   },
   "dependencies": {
+    "@mdx-js/loader": "^2.2.1",
     "autoprefixer": "^10.4.7",
     "daisyui": "^2.20.0",
     "dayjs": "^1.11.4",
