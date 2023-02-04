@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { getPostsYearAndTitle, getTitleById, getContentById } from '@Lib/post';
 import type { SinglePostPageProps, StaticPropsParams } from './types';
 
-export default function SinglePostPage(props: SinglePostPageProps) {
+function TechBlogSinglePostPage(props: SinglePostPageProps) {
   /* States */
   const { postTitle, postContent } = props;
 
@@ -21,8 +21,8 @@ export default function SinglePostPage(props: SinglePostPageProps) {
 export async function getStaticPaths() {
   /* States */
   const allPostsYearAndTitle = getPostsYearAndTitle();
-  const paths = allPostsYearAndTitle.map((paths) => ({
-    params: { year: paths.date, id: paths.id },
+  const paths = allPostsYearAndTitle.map(({ year, id }) => ({
+    params: { year, id },
   }));
 
   /* Main */
@@ -45,3 +45,5 @@ export async function getStaticProps({ params }: StaticPropsParams) {
     },
   };
 }
+
+export default memo(TechBlogSinglePostPage);
