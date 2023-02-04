@@ -16,10 +16,7 @@ import {
 } from '@Model/GeneralModels';
 import theme, { useMediaQuery } from '@Theme/index';
 import scopedStyles from './index.module.css';
-import type {
-  HomePageProps,
-  TechPostIdDateYearCategories,
-} from '@Model/GeneralTypes';
+import type { HomePageProps } from '@Model/GeneralTypes';
 
 export function getStaticProps() {
   const allPostsData = getPostsList();
@@ -35,49 +32,48 @@ function Home(props: HomePageProps): React.ReactElement {
 
   /* Data */
   const postInIndex = allPostsData.slice(0, LATEST_POST_COUNT_IN_INDEX);
-  const [firstPost, secondPost, thirdPost, ...restPosts] = postInIndex;
-  const restRecentPosts: TechPostIdDateYearCategories = restPosts.map(
-    ({ id, date, year, category }) => ({ id, date, year, category })
-  );
+  const [firstPost, secondPost, thirdPost, ...restRecentPosts] = postInIndex;
 
   /* Views */
   const LatestPostsBlock = useMemo(
     () => (
-      <div
-        className={cn(
-          breakpointsUpSm
-            ? scopedStyles.main_section_main_up_sm
-            : scopedStyles.main_section_main
-        )}
-      >
-        <div className={cn(scopedStyles.main_section_main_latest)}>
-          <PostCard
-            coverImage={MOCK_COVER_IMAGE}
-            postTitle={firstPost.title}
-            postDate={firstPost.date}
-            postCategories={firstPost.category}
-            postUrl={`/${firstPost.year}/${firstPost.id}`}
-          />
+      <Container>
+        <div
+          className={cn(
+            breakpointsUpSm
+              ? scopedStyles.main_section_main_up_sm
+              : scopedStyles.main_section_main
+          )}
+        >
+          <div className={cn(scopedStyles.main_section_main_latest)}>
+            <PostCard
+              coverImage={MOCK_COVER_IMAGE}
+              postTitle={firstPost.title}
+              postDate={firstPost.date}
+              postCategories={firstPost.category}
+              postUrl={`/${firstPost.year}/${firstPost.id}`}
+            />
+          </div>
+          <div className={cn(scopedStyles.main_section_main_second)}>
+            <PostCard
+              coverImage={MOCK_COVER_IMAGE}
+              postTitle={secondPost.title}
+              postDate={secondPost.date}
+              postCategories={secondPost.category}
+              postUrl={`/${secondPost.year}/${secondPost.id}`}
+            />
+          </div>
+          <div className={cn(scopedStyles.main_section_main_third)}>
+            <PostCard
+              coverImage={MOCK_COVER_IMAGE}
+              postTitle={thirdPost.title}
+              postDate={thirdPost.date}
+              postCategories={thirdPost.category}
+              postUrl={`/${thirdPost.year}/${thirdPost.id}`}
+            />
+          </div>
         </div>
-        <div className={cn(scopedStyles.main_section_main_second)}>
-          <PostCard
-            coverImage={MOCK_COVER_IMAGE}
-            postTitle={secondPost.title}
-            postDate={secondPost.date}
-            postCategories={secondPost.category}
-            postUrl={`/${secondPost.year}/${secondPost.id}`}
-          />
-        </div>
-        <div className={cn(scopedStyles.main_section_main_third)}>
-          <PostCard
-            coverImage={MOCK_COVER_IMAGE}
-            postTitle={thirdPost.title}
-            postDate={thirdPost.date}
-            postCategories={thirdPost.category}
-            postUrl={`/${thirdPost.year}/${thirdPost.id}`}
-          />
-        </div>
-      </div>
+      </Container>
     ),
     [
       breakpointsUpSm,

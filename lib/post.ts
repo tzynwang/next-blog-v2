@@ -4,7 +4,10 @@ import matter from 'gray-matter';
 import path from 'path';
 import { marked } from 'marked';
 import timeFormat from '@Lib/time-format';
-import type { TechPostIdDateYearCategories } from '@Model/GeneralTypes';
+import type {
+  TechPostIdTitleDateYearCategoryContents,
+  TechPostIdDateYearCategories,
+} from '@Model/GeneralTypes';
 
 type MatterResult = {
   title: string;
@@ -76,7 +79,7 @@ export function sortPostByDate(raw: Post[]) {
   );
 }
 
-export function getPostsList() {
+export function getPostsList(): TechPostIdTitleDateYearCategoryContents {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
