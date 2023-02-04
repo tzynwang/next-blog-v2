@@ -1,44 +1,34 @@
-import Link from 'next/link';
-import React from 'react';
+import React, { memo } from 'react';
 import { getPostsYearAndTitle } from '@Lib/post';
+import CategoryList from '@Component/Common/CategoryList';
+import ContentListLayout from '@Component/Layout/ContentList';
+import PostListContainer from '@Component/Layout/PostListContainer';
+import useGetCategoryPair from '@Hook/useGetCategoryPair';
+import useGetPostList from '@Hook/useGetPostList';
+import type { TechPostIdDateYearCategories } from '@Model/GeneralTypes';
 
 interface ArchivePageProps {
-  allPostsYearAndTitle: Array<{ id: string; date: string; category: string[] }>;
+  allPostIdDateCategory: TechPostIdDateYearCategories;
 }
 
-export default function ArchivePage(props: ArchivePageProps) {
+function ArchivePage(props: ArchivePageProps): React.ReactElement {
   /* States */
-  const { allPostsYearAndTitle } = props;
+  const { allPostIdDateCategory } = props;
+  const PostsList = useGetPostList(allPostIdDateCategory);
+  const categoryPairs = useGetCategoryPair(allPostIdDateCategory);
 
   /* Main */
   return (
-    <React.Fragment>
-      <h1 className="text-3xl">All posts</h1>
-      <ul>
-        {allPostsYearAndTitle.map(({ id, date, category }) => (
-          <li key={id}>
-            <Link href={`/${date}/${id}`} className="inline-flex space-x-2">
-              <span>{date}</span>
-              <span className="underline">{id}</span>
-              <div className="inline-flex space-x-2">
-                {category.map((c, i) => (
-                  <span
-                    key={i}
-                    className="px-2 py-1 rounded-md bg-secondary-content text-sm"
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </React.Fragment>
+    <ContentListLayout
+      side={<CategoryList categories={categoryPairs} />}
+      main={<PostListContainer>{PostsList}</PostListContainer>}
+    />
   );
 }
 
 export async function getStaticProps() {
-  const allPostsYearAndTitle = getPostsYearAndTitle();
-  return { props: { allPostsYearAndTitle } };
+  const allPostIdDateCategory = getPostsYearAndTitle();
+  return { props: { allPostIdDateCategory } };
 }
+
+export default memo(ArchivePage);
