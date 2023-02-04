@@ -49,7 +49,7 @@ function Home(props: HomePageProps): React.ReactElement {
             coverImage={MOCK_COVER_IMAGE}
             postTitle={firstPost.title}
             postDate={firstPost.date}
-            postCategories={firstPost.category}
+            postCategories={firstPost.tag}
             postUrl={`/${firstPost.year}/${firstPost.id}`}
           />
         </div>
@@ -58,7 +58,7 @@ function Home(props: HomePageProps): React.ReactElement {
             coverImage={MOCK_COVER_IMAGE}
             postTitle={secondPost.title}
             postDate={secondPost.date}
-            postCategories={secondPost.category}
+            postCategories={secondPost.tag}
             postUrl={`/${secondPost.year}/${secondPost.id}`}
           />
         </div>
@@ -67,7 +67,7 @@ function Home(props: HomePageProps): React.ReactElement {
             coverImage={MOCK_COVER_IMAGE}
             postTitle={thirdPost.title}
             postDate={thirdPost.date}
-            postCategories={thirdPost.category}
+            postCategories={thirdPost.tag}
             postUrl={`/${thirdPost.year}/${thirdPost.id}`}
           />
         </div>

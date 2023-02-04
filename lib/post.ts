@@ -5,14 +5,14 @@ import path from 'path';
 import { marked } from 'marked';
 import timeFormat from '@Lib/time-format';
 import type {
-  TechPostIdTitleDateYearCategoryContents,
-  TechPostIdDateYearCategories,
+  TechPostIdTitleDateYearTagContents,
+  TechPostIdDateYearTags,
 } from '@Model/GeneralTypes';
 
 type MatterResult = {
   title: string;
   date: Date;
-  category: string[];
+  tag: string[];
 };
 
 type Post = MatterResult & {
@@ -58,7 +58,7 @@ export function getPostData(contents: string) {
       if (
         text.includes('title') &&
         text.includes('date') &&
-        text.includes('category')
+        text.includes('tag')
       ) {
         return '';
       }
@@ -79,7 +79,7 @@ export function sortPostByDate(raw: Post[]) {
   );
 }
 
-export function getPostsList(): TechPostIdTitleDateYearCategoryContents {
+export function getPostsList(): TechPostIdTitleDateYearTagContents {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -100,7 +100,7 @@ export function getPostsList(): TechPostIdTitleDateYearCategoryContents {
       id,
       title: typedMatterResult.title,
       date: typedMatterResult.date,
-      category: typedMatterResult.category.sort(),
+      tag: typedMatterResult.tag.sort(),
       htmlContent,
     };
   });
@@ -113,7 +113,7 @@ export function getPostsList(): TechPostIdTitleDateYearCategoryContents {
   }));
 }
 
-export function getPostsYearAndTitle(): TechPostIdDateYearCategories {
+export function getPostsYearAndTitle(): TechPostIdDateYearTags {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsYearAndTitle = fileNames.map((fileName) => {
@@ -131,7 +131,7 @@ export function getPostsYearAndTitle(): TechPostIdDateYearCategories {
     return {
       id,
       date: matterResult.data.date as Date,
-      category: matterResult.data.category as string[],
+      tag: matterResult.data.tag as string[],
     };
   });
 

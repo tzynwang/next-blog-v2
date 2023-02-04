@@ -1,34 +1,34 @@
 import React, { memo } from 'react';
-import CategoryList from '@Component/Common/CategoryList';
+import TagList from '@Component/Common/TagList';
 import ContentListLayout from '@Component/Layout/ContentList';
 import PostListContainer from '@Component/Layout/PostListContainer';
-import useGetCategoryPair from '@Hook/useGetCategoryPair';
+import useGetTagPair from '@Hook/useGetTagPair';
 import useGetPostList from '@Hook/useGetPostList';
 import { getPostsList } from '@Lib/post';
-import type { TechPostIdTitleDateYearCategoryContents } from '@Model/GeneralTypes';
+import type { TechPostIdTitleDateYearTagContents } from '@Model/GeneralTypes';
 
 interface ArchivePageProps {
-  allPostIdDateCategory: TechPostIdTitleDateYearCategoryContents;
+  allPostIdDateTag: TechPostIdTitleDateYearTagContents;
 }
 
 function ArchivePage(props: ArchivePageProps): React.ReactElement {
   /* States */
-  const { allPostIdDateCategory } = props;
-  const PostsList = useGetPostList(allPostIdDateCategory);
-  const categoryPairs = useGetCategoryPair(allPostIdDateCategory);
+  const { allPostIdDateTag } = props;
+  const PostsList = useGetPostList(allPostIdDateTag);
+  const tagPairs = useGetTagPair(allPostIdDateTag);
 
   /* Main */
   return (
     <ContentListLayout
-      side={<CategoryList categories={categoryPairs} />}
+      side={<TagList tags={tagPairs} />}
       main={<PostListContainer>{PostsList}</PostListContainer>}
     />
   );
 }
 
 export async function getStaticProps() {
-  const allPostIdDateCategory = getPostsList();
-  return { props: { allPostIdDateCategory } };
+  const allPostIdDateTag = getPostsList();
+  return { props: { allPostIdDateTag } };
 }
 
 export default memo(ArchivePage);

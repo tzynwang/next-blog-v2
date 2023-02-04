@@ -25,6 +25,7 @@ const tw = {
   'frontend.techBlogSinglePost.toc': '目錄',
   'frontend.techBlogSinglePost.seriesPost': '系列文',
   'frontend.techBlogSinglePost.category': '類別',
+  'frontend.techBlogSinglePost.tag': '標籤',
 };
 
 export default tw;
