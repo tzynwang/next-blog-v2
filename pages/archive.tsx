@@ -1,14 +1,14 @@
 import React, { memo } from 'react';
-import { getPostsYearAndTitle } from '@Lib/post';
+import { getPostsList } from '@Lib/post';
 import CategoryList from '@Component/Common/CategoryList';
 import ContentListLayout from '@Component/Layout/ContentList';
 import PostListContainer from '@Component/Layout/PostListContainer';
 import useGetCategoryPair from '@Hook/useGetCategoryPair';
 import useGetPostList from '@Hook/useGetPostList';
-import type { TechPostIdDateYearCategories } from '@Model/GeneralTypes';
+import type { TechPostIdTitleDateYearCategoryContents } from '@Model/GeneralTypes';
 
 interface ArchivePageProps {
-  allPostIdDateCategory: TechPostIdDateYearCategories;
+  allPostIdDateCategory: TechPostIdTitleDateYearCategoryContents;
 }
 
 function ArchivePage(props: ArchivePageProps): React.ReactElement {
@@ -27,7 +27,7 @@ function ArchivePage(props: ArchivePageProps): React.ReactElement {
 }
 
 export async function getStaticProps() {
-  const allPostIdDateCategory = getPostsYearAndTitle();
+  const allPostIdDateCategory = getPostsList();
   return { props: { allPostIdDateCategory } };
 }
 
