@@ -3,7 +3,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { marked } from 'marked';
-import timeFormat from './time-format';
+import timeFormat from '@Lib/time-format';
 import type { TechPostIdDateYearCategories } from '@Model/GeneralTypes';
 
 type MatterResult = {
