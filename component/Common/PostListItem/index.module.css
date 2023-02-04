@@ -1,19 +1,25 @@
 .container {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--mui-palette-text-primary);
+}
+
+.container_up_sm {
+  flex-direction: row;
   align-items: center;
   gap: 16px;
   padding: 8px 16px;
-  border: 1px solid var(--mui-palette-text-primary);
 }
 
 .category_container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 16px;
-  margin-left: auto;
 }
 
 .category_container_up_sm {
-  flex-direction: row;
+  margin-left: auto;
 }

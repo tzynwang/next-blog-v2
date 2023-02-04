@@ -15,7 +15,12 @@ function PostListItem(props: PostListItemProps): React.ReactElement {
 
   /* Main */
   return (
-    <div className={cn(scopedStyles.container)}>
+    <div
+      className={cn(
+        scopedStyles.container,
+        breakpointsUpSm && scopedStyles.container_up_sm
+      )}
+    >
       <Typography variant="body1">{postDate}</Typography>
       <Link href={postUrl}>
         <Typography variant="body1">{postTitle}</Typography>
