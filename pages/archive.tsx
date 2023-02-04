@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
-import { getPostsList } from '@Lib/post';
 import CategoryList from '@Component/Common/CategoryList';
 import ContentListLayout from '@Component/Layout/ContentList';
 import PostListContainer from '@Component/Layout/PostListContainer';
 import useGetCategoryPair from '@Hook/useGetCategoryPair';
 import useGetPostList from '@Hook/useGetPostList';
+import { getPostsList } from '@Lib/post';
 import type { TechPostIdTitleDateYearCategoryContents } from '@Model/GeneralTypes';
 
 interface ArchivePageProps {
