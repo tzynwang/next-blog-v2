@@ -10,7 +10,6 @@ import useI18n from '@Hook/useI18n';
 import { useReplaceToNode } from '@Hook/useStringReplacement';
 import useUrlPath from '@Hook/useUrlPath';
 import { getPostsList } from '@Lib/post';
-import timeFormat from '@Lib/time-format';
 import {
   MOCK_COVER_IMAGE,
   LATEST_POST_COUNT_IN_INDEX,
@@ -55,7 +54,7 @@ function Home(props: HomePageProps): React.ReactElement {
           <PostCard
             coverImage={MOCK_COVER_IMAGE}
             postTitle={firstPost.title}
-            postDate={timeFormat(firstPost.date)}
+            postDate={firstPost.date}
             postCategories={firstPost.category}
             postUrl={`/${firstPost.year}/${firstPost.id}`}
           />
@@ -64,7 +63,7 @@ function Home(props: HomePageProps): React.ReactElement {
           <PostCard
             coverImage={MOCK_COVER_IMAGE}
             postTitle={secondPost.title}
-            postDate={timeFormat(secondPost.date)}
+            postDate={secondPost.date}
             postCategories={secondPost.category}
             postUrl={`/${secondPost.year}/${secondPost.id}`}
           />
@@ -73,7 +72,7 @@ function Home(props: HomePageProps): React.ReactElement {
           <PostCard
             coverImage={MOCK_COVER_IMAGE}
             postTitle={thirdPost.title}
-            postDate={timeFormat(thirdPost.date)}
+            postDate={thirdPost.date}
             postCategories={thirdPost.category}
             postUrl={`/${thirdPost.year}/${thirdPost.id}`}
           />
