@@ -1,0 +1,24 @@
+.nav_ul_container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav_ul_container_up_sm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav_ul {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav_ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
