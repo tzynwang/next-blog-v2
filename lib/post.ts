@@ -106,6 +106,7 @@ export function getPostsList() {
   return sortPostByDate(allPostsData).map((post) => ({
     ...post,
     date: timeFormat(post.date),
+    year: dayjs(post.date).format('YYYY'),
   }));
 }
 

@@ -1,3 +1,8 @@
+:root {
+  --post-min-height: 240px;
+  --post-max-height: 360px;
+}
+
 * {
   margin: 0;
   padding: 0;

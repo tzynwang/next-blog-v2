@@ -211,6 +211,9 @@ export const SYNTAX_HIGHLIGHTER_LANGUAGES = [
   'zephir',
 ] as const;
 
+/** 設定首頁要出現的技術文章數量 */
+export const LATEST_POST_COUNT_IN_INDEX = 10
+
 export enum ROUTE {
   HOME = '/',
   TECH_BLOG = '/archive',

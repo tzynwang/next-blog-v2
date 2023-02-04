@@ -36,3 +36,19 @@ export interface TechPostIdDateYearCategory {
 }
 
 export type TechPostIdDateYearCategories = TechPostIdDateYearCategory[];
+
+export interface TechPostIdTitleDateYearCategoryContent {
+  id: string;
+  title: string;
+  date: string;
+  year: string;
+  category: string[];
+  htmlContent: string;
+}
+
+export type TechPostIdTitleDateYearCategoryContents =
+  TechPostIdTitleDateYearCategoryContent[];
+
+export type HomePageProps = {
+  allPostsData: TechPostIdTitleDateYearCategoryContents;
+};
