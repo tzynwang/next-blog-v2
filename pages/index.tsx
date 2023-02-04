@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PostCategoryChip from '@Component/Common/PostCategoryChip';
 import { getPostsList } from '@Lib/post';
 import type { HomeProps } from './types';
 
@@ -20,12 +21,7 @@ function Home(props: HomeProps): React.ReactElement {
           <div className="text-xl my-1">{date}</div>
           <div className="inline-flex space-x-2">
             {category.map((c, index) => (
-              <span
-                key={index}
-                className="px-2 py-1 rounded-md bg-secondary-content text-sm"
-              >
-                {c}
-              </span>
+              <PostCategoryChip key={index} label={c} />
             ))}
           </div>
           <div
