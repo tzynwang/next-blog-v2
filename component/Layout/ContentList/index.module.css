@@ -1,0 +1,9 @@
+.PostList_container {
+  display: block;
+}
+
+.PostList_container_up_md {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  gap: 16px;
+}

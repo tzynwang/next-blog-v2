@@ -27,3 +27,12 @@ export type TableOfContents = TableOfContentItem[];
 
 export type SyntaxHighlighterLanguage =
   typeof SYNTAX_HIGHLIGHTER_LANGUAGES[number];
+
+export interface TechPostIdDateYearCategory {
+  id: string;
+  date: string;
+  year: string;
+  category: string[];
+}
+
+export type TechPostIdDateYearCategories = TechPostIdDateYearCategory[];

@@ -3,6 +3,8 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { marked } from 'marked';
+import timeFormat from '@Lib/time-format';
+import type { TechPostIdDateYearCategories } from '@Model/GeneralTypes';
 
 type MatterResult = {
   title: string;
@@ -103,11 +105,11 @@ export function getPostsList() {
   // Return result
   return sortPostByDate(allPostsData).map((post) => ({
     ...post,
-    date: dayjs(post.date).format('YYYY-MM-DD'),
+    date: timeFormat(post.date),
   }));
 }
 
-export function getPostsYearAndTitle() {
+export function getPostsYearAndTitle(): TechPostIdDateYearCategories {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsYearAndTitle = fileNames.map((fileName) => {
@@ -132,5 +134,9 @@ export function getPostsYearAndTitle() {
   // Return result
   return allPostsYearAndTitle
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .map((p) => ({ ...p, date: dayjs(p.date).format('YYYY') }));
+    .map((p) => ({
+      ...p,
+      date: timeFormat(p.date),
+      year: dayjs(p.date).format('YYYY'),
+    }));
 }
