@@ -3,9 +3,15 @@
 clear-cache:
 	rm -rf .next
 
-# open dev server
+# open dev server before lunch, command dev && open-dev won't work because dev will not end before ctrl + c
+# ref: https://github.com/vercel/next.js/discussions/13448#discussioncomment-1708283
+.PHONY: open-dev
+open-dev:
+	open http://localhost:3000
+
+# lunch local dev server
 .PHONY: dev
-dev: clear-cache
+dev: open-dev clear-cache
 	npx next dev
 
 # generate static site content
