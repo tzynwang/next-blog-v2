@@ -22,6 +22,7 @@
     "daisyui": "^2.20.0",
     "dayjs": "^1.11.4",
     "gray-matter": "^4.0.3",
+    "lodash": "^4.17.21",
     "marked": "^4.0.18",
     "next": "^13.1.6",
     "postcss": "^8.4.14",
@@ -30,6 +31,7 @@
     "tailwindcss": "^3.1.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "@types/marked": "^4.0.3",
     "@types/node": "18.0.6",
     "@types/react": "18.0.15",
