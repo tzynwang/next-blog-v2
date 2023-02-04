@@ -4,9 +4,9 @@ import cn from 'classnames';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import ThemeToggle from '@Component/Common/ThemeToggle';
-import theme, { useMediaQuery } from '@Theme/index';
 import useI18n from '@Hook/useI18n';
 import useUrlPath from '@Hook/useUrlPath';
+import theme, { useMediaQuery } from '@Theme/index';
 import scopedStyles from './index.module.css';
 
 function Footer(): React.ReactElement {

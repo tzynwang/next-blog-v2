@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import cn from 'classnames';
 import IconButton from '@mui/material/IconButton';
-import { useColorScheme } from '@Theme/index';
 import ModeDarkIcon from '@Asset/dark_mode_black_24dp.svg';
+import { useColorScheme } from '@Theme/index';
 import scopedStyles from './index.module.css';
 
 function ThemeToggle(): React.ReactElement {
