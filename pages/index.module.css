@@ -3,7 +3,9 @@
 }
 
 .main_section_main {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .main_section_main_up_sm {

@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 import Container from '@mui/material/Container';
@@ -35,57 +35,53 @@ function Home(props: HomePageProps): React.ReactElement {
   const [firstPost, secondPost, thirdPost, ...restRecentPosts] = postInIndex;
 
   /* Views */
-  const LatestPostsBlock = useMemo(
-    () => (
-      <Container>
-        <div
-          className={cn(
-            breakpointsUpSm
-              ? scopedStyles.main_section_main_up_sm
-              : scopedStyles.main_section_main
-          )}
-        >
-          <div className={cn(scopedStyles.main_section_main_latest)}>
-            <PostCard
-              coverImage={MOCK_COVER_IMAGE}
-              postTitle={firstPost.title}
-              postDate={firstPost.date}
-              postCategories={firstPost.category}
-              postUrl={`/${firstPost.year}/${firstPost.id}`}
-            />
-          </div>
-          <div className={cn(scopedStyles.main_section_main_second)}>
-            <PostCard
-              coverImage={MOCK_COVER_IMAGE}
-              postTitle={secondPost.title}
-              postDate={secondPost.date}
-              postCategories={secondPost.category}
-              postUrl={`/${secondPost.year}/${secondPost.id}`}
-            />
-          </div>
-          <div className={cn(scopedStyles.main_section_main_third)}>
-            <PostCard
-              coverImage={MOCK_COVER_IMAGE}
-              postTitle={thirdPost.title}
-              postDate={thirdPost.date}
-              postCategories={thirdPost.category}
-              postUrl={`/${thirdPost.year}/${thirdPost.id}`}
-            />
-          </div>
+  const LatestPostsBlock = (
+    <Container>
+      <div
+        className={cn(
+          breakpointsUpSm
+            ? scopedStyles.main_section_main_up_sm
+            : scopedStyles.main_section_main
+        )}
+      >
+        <div className={cn(scopedStyles.main_section_main_latest)}>
+          <PostCard
+            coverImage={MOCK_COVER_IMAGE}
+            postTitle={firstPost.title}
+            postDate={firstPost.date}
+            postCategories={firstPost.category}
+            postUrl={`/${firstPost.year}/${firstPost.id}`}
+          />
         </div>
-      </Container>
-    ),
-    [
-      breakpointsUpSm,
-      JSON.stringify(firstPost),
-      JSON.stringify(secondPost),
-      JSON.stringify(thirdPost),
-    ]
+        <div className={cn(scopedStyles.main_section_main_second)}>
+          <PostCard
+            coverImage={MOCK_COVER_IMAGE}
+            postTitle={secondPost.title}
+            postDate={secondPost.date}
+            postCategories={secondPost.category}
+            postUrl={`/${secondPost.year}/${secondPost.id}`}
+          />
+        </div>
+        <div className={cn(scopedStyles.main_section_main_third)}>
+          <PostCard
+            coverImage={MOCK_COVER_IMAGE}
+            postTitle={thirdPost.title}
+            postDate={thirdPost.date}
+            postCategories={thirdPost.category}
+            postUrl={`/${thirdPost.year}/${thirdPost.id}`}
+          />
+        </div>
+      </div>
+    </Container>
   );
   const RestPostsList = useGetPostList(restRecentPosts);
   const MorePostsLink = useReplaceToNode(
     i18n.t('frontend.homePage.latestPosts.morePosts'),
-    [<Link href={path.techBlog}>{i18n.t('frontend.nav.techBlog')}</Link>]
+    [
+      <Link href={path.techBlog} key={path.techBlog}>
+        {i18n.t('frontend.nav.techBlog')}
+      </Link>,
+    ]
   );
 
   /* Main */
