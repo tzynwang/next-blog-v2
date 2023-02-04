@@ -34,7 +34,7 @@ new:
 	echo "---" > ./post/$(post).mdx
 	echo "title: '$(post)'" >> ./post/$(post).mdx
 	echo "time: $(shell date +%F) $(shell date +%T)" >> ./post/$(post).mdx
-	echo "category: []" >> ./post/$(post).mdx
+	echo "tag: []" >> ./post/$(post).mdx
 	echo "---" >> ./post/$(post).mdx
 
 # deploy build result to gitHub repo as branch "gh-pages"

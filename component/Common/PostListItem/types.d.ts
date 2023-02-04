@@ -1,6 +1,6 @@
 export interface PostListItemProps {
   postDate: string;
   postTitle: string;
-  postCategories: string[];
+  postTags: string[];
   postUrl: string;
 }

@@ -9,7 +9,7 @@ export default function useUrlPath() {
   return {
     home: `${urlPrefix}${ROUTE.HOME}`,
     techBlog: `${urlPrefix}${ROUTE.TECH_BLOG}`,
-    techBlogCategory: `${urlPrefix}${ROUTE.TECH_BLOG_CATEGORY}`,
+    techBlogTag: `${urlPrefix}${ROUTE.TECH_BLOG_TAG}`,
     techBlogSinglePost: `${urlPrefix}${ROUTE.TECH_BLOG_SINGLE_POST}`,
     snippet: `${urlPrefix}${ROUTE.SNIPPET}`,
     blog: `${urlPrefix}${ROUTE.BLOG}`,

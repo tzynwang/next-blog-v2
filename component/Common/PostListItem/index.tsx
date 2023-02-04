@@ -2,15 +2,15 @@ import React, { memo } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 import Typography from '@mui/material/Typography';
-import useGetPostCategoryChip from '@Hook/useGetPostCategoryChip';
+import useGetPostTagChip from '@Hook/useGetPostTagChip';
 import theme, { useMediaQuery } from '@Theme/index';
 import scopedStyles from './index.module.css';
 import type { PostListItemProps } from './types';
 
 function PostListItem(props: PostListItemProps): React.ReactElement {
   /* States */
-  const { postDate, postTitle, postCategories, postUrl } = props;
-  const PostCategoryChips = useGetPostCategoryChip(postCategories);
+  const { postDate, postTitle, postTags, postUrl } = props;
+  const PostTagChips = useGetPostTagChip(postTags);
   const breakpointsUpSm = useMediaQuery(theme.breakpoints.up('sm'));
 
   /* Main */
@@ -18,7 +18,7 @@ function PostListItem(props: PostListItemProps): React.ReactElement {
     <div
       className={cn(
         scopedStyles.container,
-        breakpointsUpSm && scopedStyles.container_up_sm
+        breakpointsUpSm && scopedStyles.tag_container_up_sm
       )}
     >
       <Typography variant="body1">{postDate}</Typography>
@@ -27,11 +27,11 @@ function PostListItem(props: PostListItemProps): React.ReactElement {
       </Link>
       <div
         className={cn(
-          scopedStyles.category_container,
-          breakpointsUpSm && scopedStyles.category_container_up_sm
+          scopedStyles.tag_container,
+          breakpointsUpSm && scopedStyles.tag_container_up_sm
         )}
       >
-        {PostCategoryChips}
+        {PostTagChips}
       </div>
     </div>
   );

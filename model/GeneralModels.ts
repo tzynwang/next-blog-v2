@@ -1,5 +1,5 @@
 import type {
-  CategoryCountPairs,
+  TagCountPairs,
   SeriesPosts,
   TableOfContents,
 } from './GeneralTypes';
@@ -212,12 +212,12 @@ export const SYNTAX_HIGHLIGHTER_LANGUAGES = [
 ] as const;
 
 /** 設定首頁要出現的技術文章數量 */
-export const LATEST_POST_COUNT_IN_INDEX = 10
+export const LATEST_POST_COUNT_IN_INDEX = 10;
 
 export enum ROUTE {
   HOME = '/',
   TECH_BLOG = '/archive',
-  TECH_BLOG_CATEGORY = '/category',
+  TECH_BLOG_TAG = '/tag',
   TECH_BLOG_SINGLE_POST = '/:year/:postTitle',
   SNIPPET = '/snippet',
   BLOG = '/bookshelf',
@@ -239,15 +239,16 @@ export const MOCK_POST_CATEGORIES = ['MOCK_MaterialUI', 'MOCK_TypeScript'];
 
 export const MOCK_POST_CATEGORIES_2 = ['MOCK_CSS', 'MOCK_JavaScript'];
 
-export const MOCK_POST_CATEGORY_PAIRS: CategoryCountPairs =
-  MOCK_POST_CATEGORIES.map((categoryName, index) => ({
-    categoryName,
+export const MOCK_POST_CATEGORY_PAIRS: TagCountPairs = MOCK_POST_CATEGORIES.map(
+  (tagName, index) => ({
+    tagName,
     count: index + 7,
-  }));
+  })
+);
 
-export const MOCK_POST_CATEGORY_PAIRS_2: CategoryCountPairs =
-  MOCK_POST_CATEGORIES_2.map((categoryName, index) => ({
-    categoryName,
+export const MOCK_POST_CATEGORY_PAIRS_2: TagCountPairs =
+  MOCK_POST_CATEGORIES_2.map((tagName, index) => ({
+    tagName,
     count: index + 3,
   }));
 

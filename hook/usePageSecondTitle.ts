@@ -13,7 +13,7 @@ export default function usePageSecondTitle() {
     if (pathname.match(ROUTE.SNIPPET)) return i18n.t('frontend.nav.snippet');
     if (pathname.match(ROUTE.BLOG)) return i18n.t('frontend.nav.blog');
     if (pathname.match(ROUTE.TECH_BLOG)) return i18n.t('frontend.nav.techBlog');
-    if (pathname.match(ROUTE.TECH_BLOG_CATEGORY))
+    if (pathname.match(ROUTE.TECH_BLOG_TAG))
       return `${i18n.t('frontend.nav.techBlog')}：${asPath.split('/').pop()}`;
     return '';
   }, [pathname, asPath]);

@@ -1,8 +1,8 @@
 import PostListItem from '@Component/Common/PostListItem';
-import type { TechPostIdTitleDateYearCategoryContents } from '@Model/GeneralTypes';
+import type { TechPostIdTitleDateYearTagContents } from '@Model/GeneralTypes';
 
 export default function useGetPostList(
-  lists: TechPostIdTitleDateYearCategoryContents
+  lists: TechPostIdTitleDateYearTagContents
 ) {
   /* Main */
   return lists.map((list, index) => (
@@ -10,7 +10,7 @@ export default function useGetPostList(
       <PostListItem
         postDate={list.date}
         postTitle={list.title}
-        postCategories={list.category}
+        postTags={list.tag}
         postUrl={`/${list.year}/${list.id}`}
       />
     </li>

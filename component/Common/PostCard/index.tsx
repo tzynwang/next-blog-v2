@@ -10,7 +10,7 @@ import Link from 'next/link';
 import cn from 'classnames';
 import debounce from 'lodash/debounce';
 import Typography from '@mui/material/Typography';
-import useGetPostCategoryChip from '@Hook/useGetPostCategoryChip';
+import useGetPostTagChip from '@Hook/useGetPostTagChip';
 import { POST_CARD_DIMENSION_RATIO } from '@Model/GeneralModels';
 import { useColorScheme } from '@Theme/index';
 import scopedStyles from './index.module.css';
@@ -28,7 +28,7 @@ function PostCard(props: PostCardProps): React.ReactElement {
   const [containerRatio, setContainerRatio] =
     useState<POST_CARD_CONTAINER_RATIO>(POST_CARD_CONTAINER_RATIO.DEFAULT);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const PostCategoryChips = useGetPostCategoryChip(postCategories);
+  const PostTagChips = useGetPostTagChip(postCategories);
   const { mode } = useColorScheme();
 
   /* Data */
@@ -93,8 +93,8 @@ function PostCard(props: PostCardProps): React.ReactElement {
               >
                 {postDate}
               </Typography>
-              <div className={cn(scopedStyles.category_container)}>
-                {PostCategoryChips}
+              <div className={cn(scopedStyles.tag_container)}>
+                {PostTagChips}
               </div>
             </div>
           </React.Fragment>
@@ -113,8 +113,8 @@ function PostCard(props: PostCardProps): React.ReactElement {
             <Typography variant="body1" className={cn(scopedStyles.post_date)}>
               {postDate}
             </Typography>
-            <div className={cn(scopedStyles.category_container)}>
-              {PostCategoryChips}
+            <div className={cn(scopedStyles.tag_container)}>
+              {PostTagChips}
             </div>
           </div>
         );

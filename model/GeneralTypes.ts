@@ -1,15 +1,11 @@
 import { SYNTAX_HIGHLIGHTER_LANGUAGES } from './GeneralModels';
 
-export interface CategoryCountPair {
-  categoryName: string;
+export interface TagCountPair {
+  tagName: string;
   count: number;
 }
 
-export type CategoryCountPairs = CategoryCountPair[];
-
-export interface ParamsCategory {
-  category: string;
-}
+export type TagCountPairs = TagCountPair[];
 
 export interface SeriesPost {
   postUrl: string;
@@ -28,27 +24,27 @@ export type TableOfContents = TableOfContentItem[];
 export type SyntaxHighlighterLanguage =
   typeof SYNTAX_HIGHLIGHTER_LANGUAGES[number];
 
-export interface TechPostIdDateYearCategory {
+export interface TechPostIdDateYearTag {
   id: string;
   date: string;
   year: string;
-  category: string[];
+  tag: string[];
 }
 
-export type TechPostIdDateYearCategories = TechPostIdDateYearCategory[];
+export type TechPostIdDateYearTags = TechPostIdDateYearTag[];
 
-export interface TechPostIdTitleDateYearCategoryContent {
+export interface TechPostIdTitleDateYearTagContent {
   id: string;
   title: string;
   date: string;
   year: string;
-  category: string[];
+  tag: string[];
   htmlContent: string;
 }
 
-export type TechPostIdTitleDateYearCategoryContents =
-  TechPostIdTitleDateYearCategoryContent[];
+export type TechPostIdTitleDateYearTagContents =
+  TechPostIdTitleDateYearTagContent[];
 
 export type HomePageProps = {
-  allPostsData: TechPostIdTitleDateYearCategoryContents;
+  allPostsData: TechPostIdTitleDateYearTagContents;
 };
