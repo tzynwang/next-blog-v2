@@ -6,16 +6,17 @@ import { ROUTE } from '@Model/GeneralModels';
 export default function usePageSecondTitle() {
   /* States */
   const i18n = useI18n();
-  const { pathname } = useRouter();
+  const { pathname, asPath } = useRouter();
 
   /* Data */
   const secondTitleByPathname = useMemo(() => {
     if (pathname.match(ROUTE.SNIPPET)) return i18n.t('frontend.nav.snippet');
     if (pathname.match(ROUTE.BLOG)) return i18n.t('frontend.nav.blog');
     if (pathname.match(ROUTE.TECH_BLOG)) return i18n.t('frontend.nav.techBlog');
-    // TODO: 處理 /[category]/[categoryName] 的副標題
+    if (pathname.match(ROUTE.TECH_BLOG_CATEGORY))
+      return `${i18n.t('frontend.nav.techBlog')}：${asPath.split('/').pop()}`;
     return '';
-  }, [pathname]);
+  }, [pathname, asPath]);
 
   /* Main */
   return secondTitleByPathname;
