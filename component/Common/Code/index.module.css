@@ -1,0 +1,15 @@
+.wrapper {
+  position: relative;
+}
+
+.copy_button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.copy_button:hover {
+  opacity: 1;
+}
