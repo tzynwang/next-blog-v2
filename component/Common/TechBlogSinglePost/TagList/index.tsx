@@ -18,7 +18,7 @@ function TagList(props: TagListProps): React.ReactElement {
   return (
     <div>
       <Typography variant="h4" component="p">
-        {i18n.t('frontend.techBlogSinglePost.category')}
+        {i18n.t('frontend.techBlogSinglePost.tag')}
       </Typography>
       <ul
         className={cn(
