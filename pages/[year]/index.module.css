@@ -1,0 +1,27 @@
+.side_wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category_container {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.category_container_up_sm {
+  flex-direction: column;
+}
+
+.main_wrapper_up_md {
+  padding-bottom: 32px;
+}
+
+.post_title {
+  padding-top: 0;
+}
+
+.post_sub_title {
+  padding: 0.5rem 0;
+}
