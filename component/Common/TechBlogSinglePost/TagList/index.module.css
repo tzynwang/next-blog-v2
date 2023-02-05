@@ -1,0 +1,9 @@
+.tag_container {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.tag_container_up_sm {
+  flex-direction: column;
+}

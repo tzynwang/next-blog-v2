@@ -37,3 +37,18 @@ a:active {
 a:hover {
   text-decoration-color: inherit;
 }
+
+.techBlogSinglePostPage_content_wrapper p {
+  margin: 16px 0;
+}
+
+.techBlogSinglePostPage_content_wrapper pre {
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid var(--mui-palette-text-primary);
+}
+
+.techBlogSinglePostPage_content_wrapper ul {
+  list-style-position: inside;
+  list-style-type: disc;
+}

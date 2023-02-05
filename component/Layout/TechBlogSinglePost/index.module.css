@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.wrapper_up_md {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  gap: 16px;
+  padding-top: 16px;
+}

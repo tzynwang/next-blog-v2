@@ -214,6 +214,9 @@ export const SYNTAX_HIGHLIGHTER_LANGUAGES = [
 /** 設定首頁要出現的技術文章數量 */
 export const LATEST_POST_COUNT_IN_INDEX = 10;
 
+/** 技術文章本體中標題等級的極限，目前最大的標題只會是 <h2> */
+export const MAX_HEADING_LEVEL_IN_TECH_POST = 2;
+
 export enum ROUTE {
   HOME = '/',
   TECH_BLOG = '/archive',
@@ -268,6 +271,7 @@ export const MOCK_TABLE_OF_CONTENTS: TableOfContents = Array.from(
 ).map((num) => ({
   to: `SUB_TITLE_ANCHOR_${num}`,
   postSubTitle: `POST_SUB_TITLE_${num}`,
+  depth: 2,
 }));
 
 export const MOCK_CSS_CODE = `a {

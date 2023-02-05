@@ -7,8 +7,10 @@ export default (t: Theme): MuiComponentDefaultOverrides => ({
     },
     styleOverrides: {
       root: {
-        cursor: 'pointer',
+        height: '24px',
         maxWidth: '120px',
+        borderRadius: 0,
+        cursor: 'pointer',
         [t.breakpoints.up('lg')]: {
           maxWidth: 'unset',
         },
