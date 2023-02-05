@@ -7,6 +7,7 @@ import timeFormat from '@Lib/time-format';
 import type {
   TechPostIdTitleDateYearTagContents,
   TechPostIdDateYearTags,
+  TechPostTocList,
 } from '@Model/GeneralTypes';
 
 type MatterResult = {
@@ -15,29 +16,48 @@ type MatterResult = {
   tag: string[];
 };
 
-type Post = MatterResult & {
+type TechPost = MatterResult & {
   id: string;
   htmlContent: string;
 };
 
 const postsDirectory = path.join(process.cwd(), 'post');
 
-export function getContentById(id: string) {
+function loadMdxContentById(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  return fs.readFileSync(fullPath, 'utf8');
+}
+
+export function getContentById(id: string) {
+  const fileContents = loadMdxContentById(id);
   return getPostData(fileContents);
 }
 
 export function getTitleById(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const fileContents = loadMdxContentById(id);
   return matter(fileContents).data.title as string;
+}
+
+export function getTagById(id: string) {
+  const fileContents = loadMdxContentById(id);
+  return matter(fileContents).data.tag as string[];
+}
+
+export function getTocById(id: string): TechPostTocList {
+  const fileContents = loadMdxContentById(id);
+  return (
+    marked
+      .lexer(fileContents)
+      .filter((token) => token.type === 'heading')
+      // @ts-ignore
+      .map((heading) => ({ depth: heading.depth, text: heading.text }))
+  );
 }
 
 export function getPostData(contents: string) {
   const renderer = {
     heading(text: string, level: number) {
-      return `<h${level}>${text}</h${level}>`;
+      return `<h${level} id="${text}">${text}</h${level}>`;
     },
     hr() {
       return '';
@@ -72,7 +92,7 @@ export function getPostData(contents: string) {
   return marked.parse(contents);
 }
 
-export function sortPostByDate(raw: Post[]) {
+export function sortPostByDate(raw: TechPost[]) {
   // INFO: new post to old post
   return raw.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
