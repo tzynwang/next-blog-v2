@@ -17,6 +17,7 @@ export type SeriesPosts = SeriesPost[];
 export interface TableOfContentItem {
   to: string;
   postSubTitle: string;
+  depth: number;
 }
 
 export type TableOfContents = TableOfContentItem[];
