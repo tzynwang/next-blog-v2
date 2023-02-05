@@ -24,9 +24,10 @@ function TechBlogSinglePostPage(props: SinglePostPageProps) {
   /* Data */
   const toc = useMemo(
     () =>
-      postToc.map((toc) => ({
-        to: toc.text,
-        postSubTitle: toc.text,
+      postToc.map(({ text, depth }) => ({
+        to: `#${text}`,
+        postSubTitle: text,
+        depth,
       })),
     [postToc]
   );
@@ -74,13 +75,13 @@ function TechBlogSinglePostPage(props: SinglePostPageProps) {
         </div>
       }
       main={
-        <React.Fragment>
+        <div className="techBlogSinglePostPage_content_wrapper">
           {PostTitle}
           <div
             className={cn(breakpointsUpMd && scopedStyles.main_wrapper_up_md)}
             dangerouslySetInnerHTML={{ __html: postContent }}
           />
-        </React.Fragment>
+        </div>
       }
     />
   );
