@@ -12,7 +12,9 @@ function MuiThemeProvider(props: MuiThemeProviderProps) {
     <React.Fragment>
       <CssBaseline />
       <CacheProvider value={cache}>
-        <CssVarsProvider theme={theme}>{children}</CssVarsProvider>
+        <CssVarsProvider theme={theme} defaultMode="dark">
+          {children}
+        </CssVarsProvider>
       </CacheProvider>
     </React.Fragment>
   );
