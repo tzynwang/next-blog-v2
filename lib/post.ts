@@ -24,7 +24,7 @@ type TechPost = MatterResult & {
 const postsDirectory = path.join(process.cwd(), 'post');
 
 function loadMdxContentById(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.mdx`);
+  const fullPath = path.join(postsDirectory, `${id}.md`);
   return fs.readFileSync(fullPath, 'utf8');
 }
 
@@ -50,12 +50,12 @@ export function getTocById(id: string): TechPostTocList {
     .filter((token) => token.type === 'heading')
     // @ts-ignore
     .map((heading) => ({ depth: heading.depth, text: heading.text }));
-  // INFO: 20230211 修復 packages dependency 問題後，需加上 .shift() 把陣列第一位的 mdx meta 區塊移除
+  // INFO: 20230211 修復 packages dependency 問題後，需加上 .shift() 把陣列第一位的 md meta 區塊移除
   result.shift();
   return result;
 }
 
-/** 20230211 修復 packages dependency 問題後，需手動過濾 mdx meta 區塊 */
+/** 20230211 修復 packages dependency 問題後，需手動過濾 md meta 區塊 */
 function isMdMetaBlock(text: string): boolean {
   if (
     text.includes('title:') &&
@@ -116,11 +116,11 @@ export function getPostsList(): TechPostIdTitleDateYearTagContents {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
-    // Remove ".mdx" from file name to get id
-    const id = fileName.replace('.mdx', '');
+    // Remove ".md" from file name to get id
+    const id = fileName.replace('.md', '');
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, `${id}.mdx`);
+    const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const htmlContent = getPostData(fileContents);
 
@@ -150,11 +150,11 @@ export function getPostsYearAndTitle(): TechPostIdDateYearTags {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsYearAndTitle = fileNames.map((fileName) => {
-    // Remove ".mdx" from file name to get id
-    const id = fileName.replace('.mdx', '');
+    // Remove ".md" from file name to get id
+    const id = fileName.replace('.md', '');
 
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, `${id}.mdx`);
+    const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // Use gray-matter to parse the post metadata section
