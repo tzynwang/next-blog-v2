@@ -35,11 +35,16 @@
     "@types/lodash": "^4.14.191",
     "@types/marked": "^4.0.3",
     "@types/node": "18.0.6",
-    "@types/react": "18.0.15",
+    "@types/react": "^18.0.15",
     "@types/react-dom": "18.0.6",
     "@types/react-syntax-highlighter": "^15.5.6",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.3",
     "typescript": "4.7.4"
+  },
+  "overrides": {
+    "@types/react": "^18.0.15",
+    "react": "^18.2.0",
+    "svgo": "^3.0.2"
   }
 }
