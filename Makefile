@@ -2,9 +2,8 @@
 # --no-save: https://github.com/npm/npm/issues/17761
 .PHONY: i
 i:
-	nvm use
 	rm -rf node_modules
-	npm install --no-save
+	yarn install --frozen-lockfile
 
 # remove .next folder
 .PHONY: clear-cache
