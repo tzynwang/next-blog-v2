@@ -2,8 +2,9 @@ import type { TechPostTocList, SeriesPosts } from '@Model/GeneralTypes';
 
 export interface SinglePostPageProps {
   postTitle: string;
-  postContent: string;
+  postDate: string;
   postTag: string[];
+  postContent: string;
   postToc: TechPostTocList;
   postSeries: SeriesPosts;
 }

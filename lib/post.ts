@@ -39,6 +39,11 @@ export function getTitleById(id: string) {
   return matter(fileContents).data.title as string;
 }
 
+export function getDateById(id: string) {
+  const fileContents = loadMdxContentById(id);
+  return timeFormat(matter(fileContents).data.date);
+}
+
 export function getTagById(id: string) {
   const fileContents = loadMdxContentById(id);
   return matter(fileContents).data.tag as string[];
@@ -58,7 +63,11 @@ export function getTocById(id: string): TechPostTocList {
 
 /** 20230211 修復 packages dependency 問題後，需手動過濾 md meta 區塊 */
 function isMdMetaBlock(text: string): boolean {
-  if (text.includes('tag:')) {
+  if (
+    text.includes('title:') &&
+    text.includes('date:') &&
+    text.includes('tag:')
+  ) {
     return true;
   }
   return false;
@@ -91,15 +100,8 @@ export function getPostData(contents: string) {
       return `<ul>${body}</ul>`;
     },
     paragraph(text: string) {
-      if (
-        text.includes('title') &&
-        text.includes('date') &&
-        text.includes('tag')
-      ) {
+      if (isMdMetaBlock(text)) {
         return '';
-      }
-      if (text.startsWith('<img')) {
-        return text;
       }
       return `<p>${text}</p>`;
     },
@@ -110,9 +112,7 @@ export function getPostData(contents: string) {
 
 export function sortPostByDate(raw: TechPost[]) {
   // INFO: new post to old post
-  return raw.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return raw.sort((a, b) => b.date.getTime() - a.date.getTime());
 }
 
 export function getPostsList(): TechPostIdTitleDateYearTagContents {

@@ -39,8 +39,8 @@ lint:
 .PHONY: new
 new:
 	echo "---" > ./post/$(post).md
-	echo "title: '$(post)'" >> ./post/$(post).md
-	echo "time: $(shell date +%F) $(shell date +%T)" >> ./post/$(post).md
+	echo "title: $(post)" >> ./post/$(post).md
+	echo "date: $(shell date +%F) $(shell date +%T)" >> ./post/$(post).md
 	echo "tag: []" >> ./post/$(post).md
 	echo "---" >> ./post/$(post).md
 

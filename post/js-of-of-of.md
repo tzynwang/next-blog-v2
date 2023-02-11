@@ -2,7 +2,6 @@
 title: 奇妙的 JavaScript 程式碼：for (var of of of) {...}
 date: 2022-06-21 20:46:05
 tag: [JavaScript]
-tags:
 ---
 
 ## 奇妙範例
@@ -31,11 +30,11 @@ for (var a of arr) {
 - 可反推得知開頭題目被輸出到終端的是 `(var of of of)` 的第一個 `of`
 - 另外已知透過 `var` 可以重複宣告同名變數：
 
-  ```js
-  var str = 'hello';
-  var str = 'world';
-  console.log(str); // 'world'
-  ```
+```js
+var str = 'hello';
+var str = 'world';
+console.log(str); // 'world'
+```
 
 - 謎底：其實開頭的題目就是 `var of = ['of'];` 被 `(var of of of)` 覆蓋過去，內容從原本的 `['of']` 變成 `'of'`
 
@@ -59,7 +58,8 @@ for (let of of of) {
 
 - 以上兩組 code 的爆炸點都在 `let of of of` 的第二個 `of`
 - 出事的理由是因為踩到 Temporal dead zone 的坑，參考 MDN 說明：
-  - A `let` or `const` variable is said to be in a "temporal dead zone" (TDZ) from the start of the block until code execution reaches the line where the variable is declared. While inside the TDZ, the variable has not been initialized with a value, and **any attempt to access it will result in a ReferenceError**.
+
+> A `let` or `const` variable is said to be in a "temporal dead zone" (TDZ) from the start of the block until code execution reaches the line where the variable is declared. While inside the TDZ, the variable has not been initialized with a value, and **any attempt to access it will result in a ReferenceError**.
 
 ### 變形 B
 
@@ -74,10 +74,10 @@ for (var of of of) {
 - 其實就是不能對透過 `let` 宣告的變數再進行一次同名變數宣告
 - 變形 B 可抽換成：
 
-  ```js
-  let str = 'hello';
-  var str = 'world';
-  ```
+```js
+let str = 'hello';
+var str = 'world';
+```
 
 - JavaScript 只允許 `var` 進行同名變數的重複宣告，透過 `let` 或 `const` 宣告的變數都不允許此行為
 

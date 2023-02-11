@@ -6,7 +6,7 @@ export default function useGetPostTagChip(tags: string[]) {
   const Chips = useMemo(
     () =>
       tags.map((tag, index) => (
-        <PostTagChip key={index} label={tag} color="primary" />
+        <PostTagChip key={index} label={tag} color="default" />
       )),
     [tags.toString()]
   );
