@@ -58,11 +58,7 @@ export function getTocById(id: string): TechPostTocList {
 
 /** 20230211 修復 packages dependency 問題後，需手動過濾 md meta 區塊 */
 function isMdMetaBlock(text: string): boolean {
-  if (
-    text.includes('title:') &&
-    text.includes('data:') &&
-    text.includes('tag:')
-  ) {
+  if (text.includes('tag:')) {
     return true;
   }
   return false;
@@ -78,9 +74,9 @@ export function getPostData(contents: string) {
   const renderer = {
     heading(text: string, level: number) {
       if (isMdMetaBlock(text)) {
-        return `<h${level} id="${text}">${text}</h${level}>`;
+        return '';
       }
-      return '';
+      return `<h${level} id="${text}">${text}</h${level}>`;
     },
     image(href: string, _title: string, altText: string) {
       return `<img src="${href}" alt="${altText}">`;
