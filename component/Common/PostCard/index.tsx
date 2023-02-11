@@ -12,7 +12,7 @@ import debounce from 'lodash/debounce';
 import Typography from '@mui/material/Typography';
 import useGetPostTagChip from '@Hook/useGetPostTagChip';
 import { POST_CARD_DIMENSION_RATIO } from '@Model/GeneralModels';
-import { useColorScheme } from '@Theme/index';
+import { useColorScheme } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 import type { PostCardProps } from './types';
 

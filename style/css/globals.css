@@ -43,6 +43,7 @@ a:hover {
 }
 
 .techBlogSinglePostPage_content_wrapper hr {
+  margin: 16px 0;
   height: 1px;
   border: 0;
   border-top: 1px solid var(--mui-palette-text-primary);
@@ -59,4 +60,14 @@ a:hover {
 .techBlogSinglePostPage_content_wrapper ul {
   list-style-position: inside;
   list-style-type: disc;
+}
+
+.techBlogSinglePostPage_content_wrapper img {
+  max-width: 100%;
+  display: block;
+}
+
+.techBlogSinglePostPage_content_wrapper blockquote {
+  padding-left: 16px;
+  border-left: 3px solid var(--mui-palette-text-primary);
 }

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ThemeToggle from '@Component/Common/ThemeToggle';
 import useI18n from '@Hook/useI18n';
 import useUrlPath from '@Hook/useUrlPath';
-import theme, { useMediaQuery } from '@Theme/index';
+import theme, { useMediaQuery } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 
 function Footer(): React.ReactElement {

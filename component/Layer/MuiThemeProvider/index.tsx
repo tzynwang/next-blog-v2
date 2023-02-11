@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import theme, { CssVarsProvider, CacheProvider, cache } from '@Theme/index';
+import theme, { CssVarsProvider, CacheProvider, cache } from '@Style/mui/index';
 import type { MuiThemeProviderProps } from './types';
 
 function MuiThemeProvider(props: MuiThemeProviderProps) {

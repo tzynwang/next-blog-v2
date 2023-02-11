@@ -14,7 +14,7 @@ import {
   MOCK_COVER_IMAGE,
   LATEST_POST_COUNT_IN_INDEX,
 } from '@Model/GeneralModels';
-import theme, { useMediaQuery } from '@Theme/index';
+import theme, { useMediaQuery } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 import type { HomePageProps } from '@Model/GeneralTypes';
 

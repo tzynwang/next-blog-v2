@@ -1,4 +1,4 @@
-import type { Theme, MuiComponentDefaultOverrides } from '@Theme/types';
+import type { Theme, MuiComponentDefaultOverrides } from '@Style/mui/types';
 
 export default (t: Theme): MuiComponentDefaultOverrides => ({
   MuiChip: {
