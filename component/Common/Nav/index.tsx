@@ -46,7 +46,14 @@ function Footer(): React.ReactElement {
             </li>
           </ul>
           <ul className={cn(scopedStyles.nav_ul)}>
-            <li>{i18n.t('frontend.nav.GitHub')}</li>
+            <li>
+              <a
+                href="https://github.com/tzynwang/next-blog-v2"
+                target="_blank"
+              >
+                {i18n.t('frontend.nav.GitHub')}
+              </a>
+            </li>
             <li>{i18n.t('frontend.nav.RssFeed')}</li>
             <li>
               <ThemeToggle />
