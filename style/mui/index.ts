@@ -22,11 +22,11 @@ export const t = createTheme();
 const theme = createExtendTheme({
   typography: {
     h1: {
-      padding: '1.25rem 0',
+      margin: '1.25rem 0',
       fontSize: '3.5rem',
     },
     h2: {
-      padding: '1rem 0',
+      margin: '1rem 0',
       fontSize: '2.75rem',
     },
     h3: {
@@ -35,7 +35,7 @@ const theme = createExtendTheme({
     },
     h4: {
       fontSize: '1.75rem',
-      paddingBottom: '0.5rem',
+      marginBottom: '0.5rem',
     },
   },
   components: {
