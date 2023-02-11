@@ -9,7 +9,8 @@
       "@Lib/*": ["lib/*"],
       "@Model/*": ["model/*"],
       "@Style/*": ["style/*"],
-      "@Theme/*": ["theme/*"]
+      "@Theme/*": ["theme/*"],
+      "@contentlayer/generated/*": [".contentlayer/generated/*"]
     }
   }
 }
