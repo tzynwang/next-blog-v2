@@ -35,14 +35,14 @@ preview:
 lint:
 	npx next lint
 
-# create new .mdx in <root>/post folder, syntax: make new post=<article name>
+# create new .md in <root>/post folder, syntax: make new post=<article name>
 .PHONY: new
 new:
-	echo "---" > ./post/$(post).mdx
-	echo "title: '$(post)'" >> ./post/$(post).mdx
-	echo "time: $(shell date +%F) $(shell date +%T)" >> ./post/$(post).mdx
-	echo "tag: []" >> ./post/$(post).mdx
-	echo "---" >> ./post/$(post).mdx
+	echo "---" > ./post/$(post).md
+	echo "title: '$(post)'" >> ./post/$(post).md
+	echo "time: $(shell date +%F) $(shell date +%T)" >> ./post/$(post).md
+	echo "tag: []" >> ./post/$(post).md
+	echo "---" >> ./post/$(post).md
 
 # deploy build result to gitHub repo as branch "gh-pages"
 .PHONY: deploy
