@@ -39,6 +39,11 @@ export function getTitleById(id: string) {
   return matter(fileContents).data.title as string;
 }
 
+export function getDateById(id: string) {
+  const fileContents = loadMdxContentById(id);
+  return timeFormat(matter(fileContents).data.time);
+}
+
 export function getTagById(id: string) {
   const fileContents = loadMdxContentById(id);
   return matter(fileContents).data.tag as string[];

@@ -8,6 +8,7 @@ import TechBlogSinglePostLayout from '@Component/Layout/TechBlogSinglePost';
 import {
   getPostsList,
   getTitleById,
+  getDateById,
   getTagById,
   getTocById,
   getContentById,
@@ -18,7 +19,8 @@ import type { SinglePostPageProps, StaticPropsParams } from './types';
 
 function TechBlogSinglePostPage(props: SinglePostPageProps) {
   /* States */
-  const { postTitle, postToc, postTag, postSeries, postContent } = props;
+  const { postTitle, postDate, postTag, postToc, postSeries, postContent } =
+    props;
   const breakpointsUpMd = useMediaQuery(theme.breakpoints.up('md'));
 
   /* Data */
@@ -77,6 +79,7 @@ function TechBlogSinglePostPage(props: SinglePostPageProps) {
       main={
         <div className="techBlogSinglePostPage_content_wrapper">
           {PostTitle}
+          {postDate}
           <div
             className={cn(breakpointsUpMd && scopedStyles.main_wrapper_up_md)}
             dangerouslySetInnerHTML={{ __html: postContent }}
@@ -105,6 +108,7 @@ export async function getStaticProps({ params }: StaticPropsParams) {
   /* States */
   const postTitle = getTitleById(params.id);
   const postContent = getContentById(params.id);
+  const postDate = getDateById(params.id);
   const postTag = getTagById(params.id);
   const postToc = getTocById(params.id);
 
@@ -112,8 +116,9 @@ export async function getStaticProps({ params }: StaticPropsParams) {
   return {
     props: {
       postTitle,
-      postContent,
+      postDate,
       postTag,
+      postContent,
       postToc,
       postSeries: [], // TODO: 取每一篇文章的系列文資訊
     },
