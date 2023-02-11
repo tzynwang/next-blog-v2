@@ -1,4 +1,4 @@
-# switch node version, install packages without changing package-lock.json
+# install packages without changing package-lock.json
 # --no-save: https://github.com/npm/npm/issues/17761
 .PHONY: i
 i:
