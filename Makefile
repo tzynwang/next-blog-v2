@@ -43,6 +43,7 @@ new:
 	echo "date: $(shell date +%F) $(shell date +%T)" >> ./post/$(post).md
 	echo "tag: []" >> ./post/$(post).md
 	echo "---" >> ./post/$(post).md
+	mkdir public/$(shell date +%Y)/$(post)
 
 # deploy build result to gitHub repo as branch "gh-pages"
 .PHONY: deploy
