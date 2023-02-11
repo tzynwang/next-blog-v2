@@ -1,0 +1,10 @@
+.fab_position {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+}
+
+.fab_position_up_sm {
+  right: 24px;
+  bottom: 24px;
+}
