@@ -68,17 +68,6 @@ a:hover {
   font-size: 1.25rem;
 }
 
-.techBlogSinglePostPage_content_wrapper p {
-  margin: 16px 0;
-}
-
-.techBlogSinglePostPage_content_wrapper p code {
-  display: inline;
-  padding: 1px 4px;
-  background-color: var(--mui-palette-info-light);
-  color: var(--mui-palette-info-contrastText);
-}
-
 .techBlogSinglePostPage_content_wrapper hr {
   margin: 16px 0;
   height: 1px;
@@ -111,4 +100,15 @@ a:hover {
 .techBlogSinglePostPage_content_wrapper blockquote {
   padding-left: 16px;
   border-left: 3px solid var(--mui-palette-text-primary);
+}
+
+.techBlogSinglePostPage_content_wrapper :not(pre) > code {
+  display: inline;
+  padding: 1px 4px;
+  background-color: var(--mui-palette-info-light);
+  color: var(--mui-palette-info-contrastText);
+}
+
+.techBlogSinglePostPage_content_wrapper p {
+  margin: 16px 0;
 }
