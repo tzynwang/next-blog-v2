@@ -1,20 +1,25 @@
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
 import { makeStyles } from '@mui/styles';
 import {
   ThemeProvider,
   createTheme,
   StyledEngineProvider,
+  experimental_extendTheme as createExtendTheme,
   Experimental_CssVarsProvider as CssVarsProvider,
   useColorScheme,
 } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Chip from './components/Chip';
 
+export const cache = createCache({
+  key: 'normal-reader',
+  prepend: true,
+});
+
 export const t = createTheme();
 
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
+const theme = createExtendTheme({
   typography: {
     h1: {
       padding: '1.25rem 0',
@@ -47,4 +52,5 @@ export {
   useMediaQuery,
   useColorScheme,
   makeStyles,
+  CacheProvider,
 };

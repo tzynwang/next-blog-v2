@@ -45,21 +45,34 @@ export function getTagById(id: string) {
 
 export function getTocById(id: string): TechPostTocList {
   const fileContents = loadMdxContentById(id);
-  return (
-    marked
-      .lexer(fileContents)
-      .filter((token) => token.type === 'heading')
-      // @ts-ignore
-      .map((heading) => ({ depth: heading.depth, text: heading.text }))
-  );
+  const result = marked
+    .lexer(fileContents)
+    .filter((token) => token.type === 'heading')
+    // @ts-ignore
+    .map((heading) => ({ depth: heading.depth, text: heading.text }));
+  // INFO: 20230211 修復 packages dependency 問題後，需加上 .shift() 把陣列第一位的 mdx meta 區塊移除
+  result.shift();
+  return result;
+}
+
+/** 20230211 修復 packages dependency 問題後，需手動過濾 mdx meta 區塊 */
+function isMdMetaBlock(text: string): boolean {
+  if (
+    text.includes('title:') &&
+    text.includes('data:') &&
+    text.includes('tag:')
+  ) {
+    return true;
+  }
+  return false;
 }
 
 export function getPostData(contents: string) {
   const renderer = {
     heading(text: string, level: number) {
-      return `<h${level} id="${text}">${text}</h${level}>`;
-    },
-    hr() {
+      if (isMdMetaBlock(text)) {
+        return `<h${level} id="${text}">${text}</h${level}>`;
+      }
       return '';
     },
     image(href: string, _title: string, altText: string) {
