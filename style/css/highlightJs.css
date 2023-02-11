@@ -22,6 +22,11 @@
   --hljs-keyword: #7928a1;
 }
 
+pre code {
+  max-width: 100%;
+  white-space: pre-wrap;
+}
+
 pre code.hljs {
   display: block;
   overflow-x: auto;

@@ -1,6 +1,6 @@
 ---
 title: 在 MUI 5 中讓自定義的 CSS 樣式擁有較高的權重
-date: 2022-01-26 20:37:22
+date: 2023-01-26 20:37:22
 tag: [MaterialUI]
 ---
 
@@ -29,7 +29,7 @@ tag: [MaterialUI]
 
 打開 DevTool 可看到 MUI 的樣式被提前到 head 第一順位，下方才接著是使用者自訂的 CSS 內容：
 
-![injectFirst](/2022/mui-StyledEngineProvider-injectFirst/injectFirst.png)
+![injectFirst](/2023/mui-StyledEngineProvider-injectFirst/injectFirst.png)
 
 而以下是沒有使用 `injectFirst` 的情況，可以看到使用者自定義的 h1 樣式被 MUI 的設定覆蓋掉：
 
