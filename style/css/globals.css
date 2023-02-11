@@ -1,0 +1,114 @@
+:root {
+  --post-min-height: 240px;
+  --post-max-height: 360px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+  scroll-behavior: smooth;
+  background-color: var(--mui-palette-background-default);
+  color: var(--mui-palette-text-primary);
+}
+
+ul {
+  list-style-type: none;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--mui-palette-secondary-light);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration-color: inherit;
+}
+
+.techBlogSinglePostPage_content_wrapper h2 {
+  margin: 8px 0;
+  font-weight: 300;
+  font-size: 2.5rem;
+}
+
+.techBlogSinglePostPage_content_wrapper h3 {
+  margin: 4px 0;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.techBlogSinglePostPage_content_wrapper h4 {
+  margin: 2px 0;
+  font-weight: 300;
+  font-size: 1.75rem;
+}
+
+.techBlogSinglePostPage_content_wrapper h5 {
+  margin: 2px 0;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.techBlogSinglePostPage_content_wrapper h6 {
+  margin: 2px 0;
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+
+.techBlogSinglePostPage_content_wrapper hr {
+  margin: 16px 0;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--mui-palette-text-primary);
+}
+
+.techBlogSinglePostPage_content_wrapper pre {
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid var(--mui-palette-text-primary);
+  background: var(--hljs-background);
+  color: var(--hljs-color);
+}
+
+.techBlogSinglePostPage_content_wrapper ul {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+.techBlogSinglePostPage_content_wrapper ol {
+  list-style-position: inside;
+}
+
+.techBlogSinglePostPage_content_wrapper img {
+  max-width: 100%;
+  display: block;
+}
+
+.techBlogSinglePostPage_content_wrapper blockquote {
+  padding-left: 16px;
+  border-left: 3px solid var(--mui-palette-text-primary);
+}
+
+.techBlogSinglePostPage_content_wrapper :not(pre) > code {
+  display: inline;
+  padding: 1px 4px;
+  background-color: var(--mui-palette-info-light);
+  color: var(--mui-palette-info-contrastText);
+}
+
+.techBlogSinglePostPage_content_wrapper p {
+  margin: 16px 0;
+}

@@ -1,13 +1,18 @@
-const path = require('path');
+const alias = require('./config/alias');
+const svgRules = require('./config/svgRules');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['md', 'js', 'tsx', 'ts'],
   reactStrictMode: true,
   swcMinify: true,
-  webpack: (config) => {
+  webpack: (config, options) => {
+    config.module.rules.push({
+      ...svgRules,
+    });
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@Lib': path.resolve(__dirname, '..', './lib'),
+      ...alias,
     };
     return config;
   },

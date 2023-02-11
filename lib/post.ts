@@ -3,39 +3,89 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { marked } from 'marked';
+import hljs from 'highlight.js';
+import timeFormat from '@Lib/time-format';
+import type {
+  TechPostIdTitleDateYearTagContents,
+  TechPostIdDateYearTags,
+  TechPostTocList,
+} from '@Model/GeneralTypes';
 
 type MatterResult = {
   title: string;
   date: Date;
-  category: string[];
+  tag: string[];
 };
 
-type Post = MatterResult & {
+type TechPost = MatterResult & {
   id: string;
   htmlContent: string;
 };
 
 const postsDirectory = path.join(process.cwd(), 'post');
 
-export function getContentById(id: string) {
+function loadMdxContentById(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  return fs.readFileSync(fullPath, 'utf8');
+}
+
+export function getContentById(id: string) {
+  const fileContents = loadMdxContentById(id);
   return getPostData(fileContents);
 }
 
 export function getTitleById(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const fileContents = loadMdxContentById(id);
   return matter(fileContents).data.title as string;
 }
 
+export function getDateById(id: string) {
+  const fileContents = loadMdxContentById(id);
+  return timeFormat(matter(fileContents).data.date);
+}
+
+export function getTagById(id: string) {
+  const fileContents = loadMdxContentById(id);
+  return matter(fileContents).data.tag as string[];
+}
+
+export function getTocById(id: string): TechPostTocList {
+  const fileContents = loadMdxContentById(id);
+  const result = marked
+    .lexer(fileContents)
+    .filter((token) => token.type === 'heading')
+    // @ts-ignore
+    .map((heading) => ({ depth: heading.depth, text: heading.text }));
+  // INFO: 20230211 修復 packages dependency 問題後，需加上 .shift() 把陣列第一位的 md meta 區塊移除
+  result.shift();
+  return result;
+}
+
+/** 20230211 修復 packages dependency 問題後，需手動過濾 md meta 區塊 */
+function isMdMetaBlock(text: string): boolean {
+  if (
+    text.includes('title:') &&
+    text.includes('date:') &&
+    text.includes('tag:')
+  ) {
+    return true;
+  }
+  return false;
+}
+
 export function getPostData(contents: string) {
+  marked.setOptions({
+    highlight: function (code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    },
+  });
   const renderer = {
     heading(text: string, level: number) {
-      return `<h${level}>${text}</h${level}>`;
-    },
-    hr() {
-      return '';
+      if (isMdMetaBlock(text)) {
+        return '';
+      }
+      return `<h${level} id="${text}">${text}</h${level}>`;
     },
     image(href: string, _title: string, altText: string) {
       return `<img src="${href}" alt="${altText}">`;
@@ -50,15 +100,8 @@ export function getPostData(contents: string) {
       return `<ul>${body}</ul>`;
     },
     paragraph(text: string) {
-      if (
-        text.includes('title') &&
-        text.includes('date') &&
-        text.includes('category')
-      ) {
+      if (isMdMetaBlock(text)) {
         return '';
-      }
-      if (text.startsWith('<img')) {
-        return text;
       }
       return `<p>${text}</p>`;
     },
@@ -67,14 +110,12 @@ export function getPostData(contents: string) {
   return marked.parse(contents);
 }
 
-export function sortPostByDate(raw: Post[]) {
+export function sortPostByDate(raw: TechPost[]) {
   // INFO: new post to old post
-  return raw.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return raw.sort((a, b) => b.date.getTime() - a.date.getTime());
 }
 
-export function getPostsList() {
+export function getPostsList(): TechPostIdTitleDateYearTagContents {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -95,7 +136,7 @@ export function getPostsList() {
       id,
       title: typedMatterResult.title,
       date: typedMatterResult.date,
-      category: typedMatterResult.category.sort(),
+      tag: typedMatterResult.tag.sort(),
       htmlContent,
     };
   });
@@ -103,11 +144,12 @@ export function getPostsList() {
   // Return result
   return sortPostByDate(allPostsData).map((post) => ({
     ...post,
-    date: dayjs(post.date).format('YYYY-MM-DD'),
+    date: timeFormat(post.date),
+    year: dayjs(post.date).format('YYYY'),
   }));
 }
 
-export function getPostsYearAndTitle() {
+export function getPostsYearAndTitle(): TechPostIdDateYearTags {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsYearAndTitle = fileNames.map((fileName) => {
@@ -125,12 +167,16 @@ export function getPostsYearAndTitle() {
     return {
       id,
       date: matterResult.data.date as Date,
-      category: matterResult.data.category as string[],
+      tag: matterResult.data.tag as string[],
     };
   });
 
   // Return result
   return allPostsYearAndTitle
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .map((p) => ({ ...p, date: dayjs(p.date).format('YYYY') }));
+    .map((p) => ({
+      ...p,
+      date: timeFormat(p.date),
+      year: dayjs(p.date).format('YYYY'),
+    }));
 }
