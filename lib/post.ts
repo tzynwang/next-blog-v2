@@ -3,6 +3,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { marked } from 'marked';
+import hljs from 'highlight.js';
 import timeFormat from '@Lib/time-format';
 import type {
   TechPostIdTitleDateYearTagContents,
@@ -68,6 +69,12 @@ function isMdMetaBlock(text: string): boolean {
 }
 
 export function getPostData(contents: string) {
+  marked.setOptions({
+    highlight: function (code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    },
+  });
   const renderer = {
     heading(text: string, level: number) {
       if (isMdMetaBlock(text)) {
