@@ -3,7 +3,7 @@ import cn from 'classnames';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import usePageSecondTitle from '@Hook/usePageSecondTitle';
-import theme, { useMediaQuery } from '@Theme/index';
+import theme, { useMediaQuery } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 import type { PostListProps } from './types';
 

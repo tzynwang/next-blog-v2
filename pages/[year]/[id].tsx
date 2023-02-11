@@ -12,7 +12,7 @@ import {
   getTocById,
   getContentById,
 } from '@Lib/post';
-import theme, { useMediaQuery } from '@Theme/index';
+import theme, { useMediaQuery } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 import type { SinglePostPageProps, StaticPropsParams } from './types';
 

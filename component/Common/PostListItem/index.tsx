@@ -3,7 +3,7 @@ import Link from 'next/link';
 import cn from 'classnames';
 import Typography from '@mui/material/Typography';
 import useGetPostTagChip from '@Hook/useGetPostTagChip';
-import theme, { useMediaQuery } from '@Theme/index';
+import theme, { useMediaQuery } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 import type { PostListItemProps } from './types';
 

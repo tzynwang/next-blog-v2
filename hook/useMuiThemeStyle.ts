@@ -1,4 +1,4 @@
-import theme, { makeStyles } from '@Theme/index';
+import theme, { makeStyles } from '@Style/mui/index';
 
 const useMuiThemeStyle = makeStyles(
   (theme) => ({

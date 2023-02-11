@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import MainAppView from '@Component/Layer/MainAppView';
 import MuiThemeProvider from '@Component/Layer/MuiThemeProvider';
-import '@Style/globals.css';
-import '@Style/highlightJs.css';
+import '@Style/css/globals.css';
+import '@Style/css/highlightJs.css';
 import type { AppProps } from 'next/app';
 
 function AppEntry(AppEntryProps: AppProps): React.ReactElement {

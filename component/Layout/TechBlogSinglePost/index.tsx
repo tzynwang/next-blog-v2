@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import cn from 'classnames';
 import Container from '@mui/material/Container';
 import BackToTop from '@Component/Common/TechBlogSinglePost/BackToTop';
-import theme, { useMediaQuery } from '@Theme/index';
+import theme, { useMediaQuery } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 import type { PostListProps } from './types';
 

@@ -3,7 +3,7 @@ import cn from 'classnames';
 import IconButton from '@mui/material/IconButton';
 import ModeDarkIcon from '@Asset/dark_mode_black_24dp.svg';
 import ModeLightIcon from '@Asset/light_mode_black_24dp.svg';
-import { useColorScheme } from '@Theme/index';
+import { useColorScheme } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 
 function ThemeToggle(): React.ReactElement {
