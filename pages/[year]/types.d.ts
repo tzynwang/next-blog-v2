@@ -1,4 +1,5 @@
 import type { TechPostTocList, SeriesPosts } from '@Model/GeneralTypes';
+import type { TechPost } from '@contentlayer/generated/types';
 
 export interface SinglePostPageProps {
   postTitle: string;
@@ -6,11 +7,15 @@ export interface SinglePostPageProps {
   postTag: string[];
   postToc: TechPostTocList;
   postSeries: SeriesPosts;
+  contentLayerPostContent: TechPost | undefined;
+  contentMdx: string
 }
 
-interface StaticPropsParams {
+export interface StaticPropsParams {
   params: {
     id: string;
     year: string;
   };
 }
+
+export type { TechPost };

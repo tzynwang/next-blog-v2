@@ -1,5 +1,9 @@
 import React, { memo, useMemo } from 'react';
 import cn from 'classnames';
+
+import { allTechPosts } from '@contentlayer/generated/index';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+
 import Typography from '@mui/material/Typography';
 import TableOfContent from '@Component/Common/TechBlogSinglePost/TableOfContent';
 import SeriesPost from '@Component/Common/TechBlogSinglePost/SeriesPost';
@@ -11,6 +15,7 @@ import {
   getTagById,
   getTocById,
   getContentById,
+  test_getContentByMdx,
 } from '@Lib/post';
 import theme, { useMediaQuery } from '@Theme/index';
 import scopedStyles from './index.module.css';
@@ -18,8 +23,22 @@ import type { SinglePostPageProps, StaticPropsParams } from './types';
 
 function TechBlogSinglePostPage(props: SinglePostPageProps) {
   /* States */
-  const { postTitle, postToc, postTag, postSeries, postContent } = props;
+  const {
+    postTitle,
+    postToc,
+    postTag,
+    postSeries,
+    /* postContent, */
+    /* contentLayerPostContent, */
+    contentMdx,
+  } = props;
   const breakpointsUpMd = useMediaQuery(theme.breakpoints.up('md'));
+  /* const MDXContent = contentLayerPostContent ? (
+    useMDXComponent(contentLayerPostContent.body.code)
+  ) : (
+    <React.Fragment />
+  ); */
+  const MDXContent = useMDXComponent(contentMdx);
 
   /* Data */
   const toc = useMemo(
@@ -64,6 +83,16 @@ function TechBlogSinglePostPage(props: SinglePostPageProps) {
     [postTitle]
   );
 
+  /* const Main = (
+    <div className="techBlogSinglePostPage_content_wrapper">
+      {PostTitle}
+      <div
+        className={cn(breakpointsUpMd && scopedStyles.main_wrapper_up_md)}
+        dangerouslySetInnerHTML={{ __html: postContent }}
+      />
+    </div>
+  ); */
+
   /* Main */
   return (
     <TechBlogSinglePostLayout
@@ -77,10 +106,7 @@ function TechBlogSinglePostPage(props: SinglePostPageProps) {
       main={
         <div className="techBlogSinglePostPage_content_wrapper">
           {PostTitle}
-          <div
-            className={cn(breakpointsUpMd && scopedStyles.main_wrapper_up_md)}
-            dangerouslySetInnerHTML={{ __html: postContent }}
-          />
+          <MDXContent />
         </div>
       }
     />
@@ -108,6 +134,11 @@ export async function getStaticProps({ params }: StaticPropsParams) {
   const postTag = getTagById(params.id);
   const postToc = getTocById(params.id);
 
+  const contentLayerPostContent = allTechPosts.find(
+    (p) => p._raw.flattenedPath === params.id
+  );
+  const contentMdx = await test_getContentByMdx(params.id);
+
   /* Main */
   return {
     props: {
@@ -116,6 +147,8 @@ export async function getStaticProps({ params }: StaticPropsParams) {
       postTag,
       postToc,
       postSeries: [], // TODO: 取每一篇文章的系列文資訊
+      contentLayerPostContent,
+      contentMdx: contentMdx.toString(),
     },
   };
 }
