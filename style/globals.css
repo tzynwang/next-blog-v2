@@ -42,10 +42,18 @@ a:hover {
   margin: 16px 0;
 }
 
+.techBlogSinglePostPage_content_wrapper hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--mui-palette-text-primary);
+}
+
 .techBlogSinglePostPage_content_wrapper pre {
   margin: 16px 0;
   padding: 16px;
   border: 1px solid var(--mui-palette-text-primary);
+  background: var(--hljs-background);
+  color: var(--hljs-color);
 }
 
 .techBlogSinglePostPage_content_wrapper ul {
