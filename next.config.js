@@ -1,6 +1,7 @@
-const alias = require('./config/alias');
-const mdxRules = require('./config/mdxRules');
-const svgRules = require('./config/svgRules');
+import { withContentlayer } from 'next-contentlayer';
+import alias from './config/alias.js';
+import mdxRules from './config/mdxRules.js';
+import svgRules from './config/svgRules.js';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -20,4 +21,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withContentlayer(nextConfig);
