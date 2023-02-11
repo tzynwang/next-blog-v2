@@ -4,4 +4,4 @@ const svgRules = {
   use: ['@svgr/webpack'],
 };
 
-module.exports = svgRules;
+export default svgRules;

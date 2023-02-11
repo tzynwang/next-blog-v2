@@ -8,4 +8,4 @@ const mdxRules = (options) => ({
   ],
 });
 
-module.exports = mdxRules;
+export default mdxRules
