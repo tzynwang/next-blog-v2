@@ -3,6 +3,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { marked } from 'marked';
+import { compile } from '@mdx-js/mdx';
 import timeFormat from '@Lib/time-format';
 import type {
   TechPostIdTitleDateYearTagContents,
@@ -26,6 +27,11 @@ const postsDirectory = path.join(process.cwd(), 'post');
 function loadMdxContentById(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.mdx`);
   return fs.readFileSync(fullPath, 'utf8');
+}
+
+export async function test_getContentByMdx(id: string) {
+  const fileContents = loadMdxContentById(id);
+  return await compile(fileContents);
 }
 
 export function getContentById(id: string) {
