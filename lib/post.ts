@@ -116,7 +116,7 @@ export function getPostData(contents: string) {
 export function sortPostByDate(raw: TechPost[]) {
   // INFO: new post to old post
   return raw.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => b.date.getTime() - a.date.getTime()
   );
 }
 
