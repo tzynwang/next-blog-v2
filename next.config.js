@@ -1,6 +1,13 @@
+const nextMdx = require('@next/mdx');
+
 const alias = require('./config/alias');
 const mdxRules = require('./config/mdxRules');
 const svgRules = require('./config/svgRules');
+
+const withMdx = nextMdx({
+  extension: /\.mdx?$/,
+  options: { providerImportSource: '@mdx-js/react' },
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -20,4 +27,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withMdx(nextConfig);
