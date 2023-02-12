@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import cn from 'classnames';
-import Fab from '@mui/material/Fab';
+import ButtonBase from '@mui/material/ButtonBase';
 import Zoom from '@mui/material/Zoom';
 import ExpandLessIcon from '@Asset/expand_less_black_24dp.svg';
 import useShouldShowFab from '@Hook/useShouldShowFab';
@@ -20,18 +20,17 @@ function BackToTop(): React.ReactElement {
   /* Main */
   return (
     <Zoom in={shouldShowFab}>
-      <Fab
+      <ButtonBase
         aria-label="back-to-page-top"
         className={cn(
+          scopedStyles.fab_base_style,
           scopedStyles.fab_position,
           breakpointsUpSm && scopedStyles.fab_position_up_sm
         )}
-        color="primary"
-        size="medium"
         onClick={backToTop}
       >
-        <ExpandLessIcon />
-      </Fab>
+        <ExpandLessIcon className={cn(scopedStyles.fab_svg_fill)} />
+      </ButtonBase>
     </Zoom>
   );
 }
