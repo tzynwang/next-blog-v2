@@ -10,6 +10,8 @@ import {
   useColorScheme,
 } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import darkColorScheme from './colorSchemes/dark';
+import lightColorScheme from './colorSchemes/light';
 import Chip from './components/Chip';
 
 export const cache = createCache({
@@ -34,12 +36,16 @@ const theme = createExtendTheme({
       fontWeight: 300,
     },
     h4: {
-      fontSize: '1.75rem',
       marginBottom: '0.5rem',
+      fontSize: '1.75rem',
     },
   },
   components: {
     ...Chip(t),
+  },
+  colorSchemes: {
+    ...darkColorScheme,
+    ...lightColorScheme,
   },
 });
 
