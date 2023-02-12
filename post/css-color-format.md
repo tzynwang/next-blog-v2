@@ -26,7 +26,6 @@ tag: [CSS]
 
 下圖左右分別為 `srgb` 與 `p3` 色域中的深紅色，右側的色塊看起來比左側更飽和、鮮豔：
 
-{% figure figure--center 2022/css-color-format/srgb-p3-maroon.png "'https://codepen.io/Charlie7779/pen/ExROZqx'" %}
 ![srgb-p3-maroon demo](/2022/css-color-format/srgb-p3-maroon.png 'https://codepen.io/Charlie7779/pen/ExROZqx')
 
 ### 在 CSS 中宣告顏色的方法
@@ -37,7 +36,7 @@ tag: [CSS]
 
 以下是透過 `hsl()` 指定「同樣飽和度、同樣明度」的黃色 (`hsl(70, 100%, 50%)`) 與紫色 (`hsl(257, 100%, 50%)`)，但人眼會感覺左邊的黃色「比較亮」：
 
-![color format hsl](/2022/css-color-format/hsl.pn)
+![color format hsl](/2022/css-color-format/hsl.png)
 
 而以下兩張圖片則是透過 `lch()` 指定「同樣明度、同樣彩度」的黃色與紫色；相較於 `hsl()` 版本，以下兩組圖片的左右「亮度」看起來會比較一致：
 
