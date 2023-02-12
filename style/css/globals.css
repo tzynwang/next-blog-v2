@@ -27,7 +27,8 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: var(--mui-palette-secondary-light);
+  font-weight: 700;
+  color: var(--mui-palette-text-primary);
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: text-decoration-color 0.2s ease;
@@ -85,7 +86,7 @@ a:hover {
 
 .techBlogSinglePostPage_content_wrapper ul {
   list-style-position: inside;
-  list-style-type: disc;
+  list-style-type: square;
 }
 
 .techBlogSinglePostPage_content_wrapper ol {
@@ -105,8 +106,8 @@ a:hover {
 .techBlogSinglePostPage_content_wrapper :not(pre) > code {
   display: inline;
   padding: 1px 4px;
-  background-color: var(--mui-palette-info-light);
-  color: var(--mui-palette-info-contrastText);
+  background-color: var(--mui-palette-secondary-main);
+  color: var(--mui-palette-secondary-contrastText);
 }
 
 .techBlogSinglePostPage_content_wrapper p {
