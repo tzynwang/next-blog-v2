@@ -14,7 +14,6 @@ import {
   MOCK_COVER_IMAGE,
   LATEST_POST_COUNT_IN_INDEX,
 } from '@Model/GeneralModels';
-import theme, { useMediaQuery } from '@Style/mui/index';
 import scopedStyles from './index.module.css';
 import type { HomePageProps } from '@Model/GeneralTypes';
 
@@ -26,7 +25,6 @@ export function getStaticProps() {
 function Home(props: HomePageProps): React.ReactElement {
   /* States */
   const { allPostsData } = props;
-  const breakpointsUpSm = useMediaQuery(theme.breakpoints.up('sm'));
   const i18n = useI18n();
   const path = useUrlPath();
 
@@ -36,14 +34,8 @@ function Home(props: HomePageProps): React.ReactElement {
 
   /* Views */
   const LatestPostsBlock = (
-    <Container>
-      <div
-        className={cn(
-          breakpointsUpSm
-            ? scopedStyles.main_section_main_up_sm
-            : scopedStyles.main_section_main
-        )}
-      >
+    <Container className={scopedStyles.main_section_container}>
+      <div className={scopedStyles.main_section_main}>
         <div className={cn(scopedStyles.main_section_main_latest)}>
           <PostCard
             coverImage={MOCK_COVER_IMAGE}
