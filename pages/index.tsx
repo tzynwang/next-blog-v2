@@ -36,14 +36,8 @@ function Home(props: HomePageProps): React.ReactElement {
 
   /* Views */
   const LatestPostsBlock = (
-    <Container>
-      <div
-        className={cn(
-          breakpointsUpSm
-            ? scopedStyles.main_section_main_up_sm
-            : scopedStyles.main_section_main
-        )}
-      >
+    <Container className={scopedStyles.main_section_container}>
+      <div className={scopedStyles.main_section_main}>
         <div className={cn(scopedStyles.main_section_main_latest)}>
           <PostCard
             coverImage={MOCK_COVER_IMAGE}
