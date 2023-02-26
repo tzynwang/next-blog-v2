@@ -42,6 +42,7 @@ export interface TechPostIdTitleDateYearTagContent {
   tag: string[];
   htmlContent: string;
   summary: string;
+  banner: string;
 }
 
 export type TechPostIdTitleDateYearTagContents =

@@ -19,7 +19,7 @@ function PostCard(props: PostCardProps): React.ReactElement {
         <div
           className={cn(scopedStyles.post_image)}
           style={{
-            backgroundImage: coverImage,
+            backgroundImage: `url(${coverImage})`,
           }}
         />
         <div className={scopedStyles.post_text}>
