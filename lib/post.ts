@@ -20,37 +20,38 @@ type MatterResult = {
 type TechPost = MatterResult & {
   id: string;
   htmlContent: string;
+  summary: string;
 };
 
 const postsDirectory = path.join(process.cwd(), 'post');
 
-function loadMdxContentById(id: string) {
+function loadMdContentById(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   return fs.readFileSync(fullPath, 'utf8');
 }
 
 export function getContentById(id: string) {
-  const fileContents = loadMdxContentById(id);
+  const fileContents = loadMdContentById(id);
   return getPostData(fileContents);
 }
 
 export function getTitleById(id: string) {
-  const fileContents = loadMdxContentById(id);
+  const fileContents = loadMdContentById(id);
   return matter(fileContents).data.title as string;
 }
 
 export function getDateById(id: string) {
-  const fileContents = loadMdxContentById(id);
+  const fileContents = loadMdContentById(id);
   return timeFormat(matter(fileContents).data.date);
 }
 
 export function getTagById(id: string) {
-  const fileContents = loadMdxContentById(id);
+  const fileContents = loadMdContentById(id);
   return matter(fileContents).data.tag as string[];
 }
 
 export function getTocById(id: string): TechPostTocList {
-  const fileContents = loadMdxContentById(id);
+  const fileContents = loadMdContentById(id);
   const result = marked
     .lexer(fileContents)
     .filter((token) => token.type === 'heading')
@@ -59,6 +60,14 @@ export function getTocById(id: string): TechPostTocList {
   // INFO: 20230211 修復 packages dependency 問題後，需加上 .shift() 把陣列第一位的 md meta 區塊移除
   result.shift();
   return result;
+}
+
+export function getPostSummaryById(id: string) {
+  const fileContents = loadMdContentById(id);
+  const html = marked(fileContents);
+  const rawSummary = html.split('<p>')[1];
+  const summaryRemovePTail = rawSummary.split('</p>')[0];
+  return summaryRemovePTail;
 }
 
 /** 20230211 修復 packages dependency 問題後，需手動過濾 md meta 區塊 */
@@ -126,6 +135,7 @@ export function getPostsList(): TechPostIdTitleDateYearTagContents {
     const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const htmlContent = getPostData(fileContents);
+    const summary = getPostSummaryById(id);
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
@@ -138,6 +148,7 @@ export function getPostsList(): TechPostIdTitleDateYearTagContents {
       date: typedMatterResult.date,
       tag: typedMatterResult.tag.sort(),
       htmlContent,
+      summary,
     };
   });
 
