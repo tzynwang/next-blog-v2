@@ -42,6 +42,7 @@ new:
 	echo "title: $(post)" >> ./post/$(post).md
 	echo "date: $(shell date +%F) $(shell date +%T)" >> ./post/$(post).md
 	echo "tag: []" >> ./post/$(post).md
+	echo "banner: $(shell date +%Y)/$(post)/" >> ./post/$(post).md
 	echo "---" >> ./post/$(post).md
 	mkdir public/$(shell date +%Y)/$(post)
 
