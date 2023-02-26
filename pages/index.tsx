@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-import cn from 'classnames';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import PostCard from '@Component/Common/PostCard';
+import LatestPost from '@Component/Layout/LatestPost';
 import PostListContainer from '@Component/Layout/PostListContainer';
 import useGetPostList from '@Hook/useGetPostList';
 import useI18n from '@Hook/useI18n';
@@ -30,41 +30,64 @@ function Home(props: HomePageProps): React.ReactElement {
 
   /* Data */
   const postInIndex = allPostsData.slice(0, LATEST_POST_COUNT_IN_INDEX);
-  const [firstPost, secondPost, thirdPost, ...restRecentPosts] = postInIndex;
+  const [
+    firstPost,
+    secondPost,
+    thirdPost,
+    fourthPost,
+    fifthPost,
+    ...restRecentPosts
+  ] = postInIndex;
 
   /* Views */
   const LatestPostsBlock = (
-    <Container className={scopedStyles.main_section_container}>
-      <div className={scopedStyles.main_section_main}>
-        <div className={cn(scopedStyles.main_section_main_latest)}>
-          <PostCard
-            coverImage={MOCK_COVER_IMAGE}
-            postTitle={firstPost.title}
-            postDate={firstPost.date}
-            postCategories={firstPost.tag}
-            postUrl={`/${firstPost.year}/${firstPost.id}`}
-          />
-        </div>
-        <div className={cn(scopedStyles.main_section_main_second)}>
-          <PostCard
-            coverImage={MOCK_COVER_IMAGE}
-            postTitle={secondPost.title}
-            postDate={secondPost.date}
-            postCategories={secondPost.tag}
-            postUrl={`/${secondPost.year}/${secondPost.id}`}
-          />
-        </div>
-        <div className={cn(scopedStyles.main_section_main_third)}>
-          <PostCard
-            coverImage={MOCK_COVER_IMAGE}
-            postTitle={thirdPost.title}
-            postDate={thirdPost.date}
-            postCategories={thirdPost.tag}
-            postUrl={`/${thirdPost.year}/${thirdPost.id}`}
-          />
-        </div>
-      </div>
-    </Container>
+    <LatestPost
+      latest={
+        <PostCard
+          coverImage={MOCK_COVER_IMAGE}
+          postTitle={firstPost.title}
+          postDate={firstPost.date}
+          postCategories={firstPost.tag}
+          postUrl={`/${firstPost.year}/${firstPost.id}`}
+        />
+      }
+      second={
+        <PostCard
+          coverImage={MOCK_COVER_IMAGE}
+          postTitle={secondPost.title}
+          postDate={secondPost.date}
+          postCategories={secondPost.tag}
+          postUrl={`/${secondPost.year}/${secondPost.id}`}
+        />
+      }
+      third={
+        <PostCard
+          coverImage={MOCK_COVER_IMAGE}
+          postTitle={thirdPost.title}
+          postDate={thirdPost.date}
+          postCategories={thirdPost.tag}
+          postUrl={`/${thirdPost.year}/${thirdPost.id}`}
+        />
+      }
+      fourth={
+        <PostCard
+          coverImage={MOCK_COVER_IMAGE}
+          postTitle={fourthPost.title}
+          postDate={fourthPost.date}
+          postCategories={fourthPost.tag}
+          postUrl={`/${fourthPost.year}/${fourthPost.id}`}
+        />
+      }
+      fifth={
+        <PostCard
+          coverImage={MOCK_COVER_IMAGE}
+          postTitle={fifthPost.title}
+          postDate={fifthPost.date}
+          postCategories={fifthPost.tag}
+          postUrl={`/${fifthPost.year}/${fifthPost.id}`}
+        />
+      }
+    />
   );
   const RestPostsList = useGetPostList(restRecentPosts);
   const MorePostsLink = useReplaceToNode(
