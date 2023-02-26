@@ -15,6 +15,7 @@ type MatterResult = {
   title: string;
   date: Date;
   tag: string[];
+  banner: string;
 };
 
 type TechPost = MatterResult & {
@@ -147,6 +148,7 @@ export function getPostsList(): TechPostIdTitleDateYearTagContents {
       title: typedMatterResult.title,
       date: typedMatterResult.date,
       tag: typedMatterResult.tag.sort(),
+      banner: typedMatterResult.banner || '',
       htmlContent,
       summary,
     };

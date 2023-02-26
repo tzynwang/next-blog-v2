@@ -10,10 +10,7 @@ import useI18n from '@Hook/useI18n';
 import { useReplaceToNode } from '@Hook/useStringReplacement';
 import useUrlPath from '@Hook/useUrlPath';
 import { getPostsList } from '@Lib/post';
-import {
-  MOCK_COVER_IMAGE,
-  LATEST_POST_COUNT_IN_INDEX,
-} from '@Model/GeneralModels';
+import { LATEST_POST_COUNT_IN_INDEX } from '@Model/GeneralModels';
 import scopedStyles from './index.module.css';
 import type { HomePageProps } from '@Model/GeneralTypes';
 
@@ -44,7 +41,7 @@ function Home(props: HomePageProps): React.ReactElement {
     <LatestPost
       latest={
         <PostCard
-          coverImage={MOCK_COVER_IMAGE}
+          coverImage={firstPost.banner}
           postTitle={firstPost.title}
           postDate={firstPost.date}
           postCategories={firstPost.tag}
@@ -54,7 +51,7 @@ function Home(props: HomePageProps): React.ReactElement {
       }
       second={
         <PostCard
-          coverImage={MOCK_COVER_IMAGE}
+          coverImage={secondPost.banner}
           postTitle={secondPost.title}
           postDate={secondPost.date}
           postCategories={secondPost.tag}
@@ -64,7 +61,7 @@ function Home(props: HomePageProps): React.ReactElement {
       }
       third={
         <PostCard
-          coverImage={MOCK_COVER_IMAGE}
+          coverImage={thirdPost.banner}
           postTitle={thirdPost.title}
           postDate={thirdPost.date}
           postCategories={thirdPost.tag}
@@ -74,7 +71,7 @@ function Home(props: HomePageProps): React.ReactElement {
       }
       fourth={
         <PostCard
-          coverImage={MOCK_COVER_IMAGE}
+          coverImage={fourthPost.banner}
           postTitle={fourthPost.title}
           postDate={fourthPost.date}
           postCategories={fourthPost.tag}
@@ -84,7 +81,7 @@ function Home(props: HomePageProps): React.ReactElement {
       }
       fifth={
         <PostCard
-          coverImage={MOCK_COVER_IMAGE}
+          coverImage={fifthPost.banner}
           postTitle={fifthPost.title}
           postDate={fifthPost.date}
           postCategories={fifthPost.tag}
