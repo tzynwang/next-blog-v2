@@ -5,27 +5,34 @@
 }
 
 .card {
-  display: flex;
+  max-width: 100%;
   flex: 1 1 100%;
+  display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .post_image,
 .post_text {
+  max-width: 100%;
   flex: 1 1 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 16px;
 }
 
 .post_image {
   width: 100%;
-  min-height: 240px;
+  min-height: var(--post-min-height);
+  max-height: var(--post-max-height);
+  justify-content: center;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.post_text {
+  justify-content: flex-start;
 }
 
 @container (min-width: 720px) {
@@ -34,8 +41,8 @@
     gap: 0px;
   }
 
-  .post_image {
-    min-height: 100%;
+  .post_text {
+    justify-content: center;
   }
 }
 
