@@ -2,6 +2,7 @@
 title: yarn install --production=false 與 package.json 中的 resolutions
 date: 2023-02-21 20:11:34
 tag: [Package Manager]
+banner: 2023/yarn-install-resolutions/annie-spratt-kZO9xqmO_TA.jpg
 ---
 
 ## 總結
