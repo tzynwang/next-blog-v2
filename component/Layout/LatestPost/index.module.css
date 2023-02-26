@@ -58,11 +58,11 @@
 @container (min-width: 1040px) {
   .wrapper {
     display: grid;
-    grid-template-columns: 1.25fr 2fr 1.25fr;
-    grid-template-rows: repeat(2, clamp(var(--post-min-height), 20vh, auto));
+    grid-template-columns: 1.25fr 1fr 1fr 1.25fr;
+    grid-template-rows: repeat(2, clamp(var(--post-min-height), 25vh, auto));
     grid-template-areas:
-      'second latest third'
-      'fourth latest fifth';
+      'second latest latest third'
+      'fourth fourth fifth fifth';
     gap: 16px;
   }
 }
