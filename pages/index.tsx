@@ -49,6 +49,7 @@ function Home(props: HomePageProps): React.ReactElement {
           postDate={firstPost.date}
           postCategories={firstPost.tag}
           postUrl={`/${firstPost.year}/${firstPost.id}`}
+          summary={firstPost.summary}
         />
       }
       second={
@@ -58,6 +59,7 @@ function Home(props: HomePageProps): React.ReactElement {
           postDate={secondPost.date}
           postCategories={secondPost.tag}
           postUrl={`/${secondPost.year}/${secondPost.id}`}
+          summary={secondPost.summary}
         />
       }
       third={
@@ -67,6 +69,7 @@ function Home(props: HomePageProps): React.ReactElement {
           postDate={thirdPost.date}
           postCategories={thirdPost.tag}
           postUrl={`/${thirdPost.year}/${thirdPost.id}`}
+          summary={thirdPost.summary}
         />
       }
       fourth={
@@ -76,6 +79,7 @@ function Home(props: HomePageProps): React.ReactElement {
           postDate={fourthPost.date}
           postCategories={fourthPost.tag}
           postUrl={`/${fourthPost.year}/${fourthPost.id}`}
+          summary={fourthPost.summary}
         />
       }
       fifth={
@@ -85,6 +89,7 @@ function Home(props: HomePageProps): React.ReactElement {
           postDate={fifthPost.date}
           postCategories={fifthPost.tag}
           postUrl={`/${fifthPost.year}/${fifthPost.id}`}
+          summary={fifthPost.summary}
         />
       }
     />
