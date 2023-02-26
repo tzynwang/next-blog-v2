@@ -8,7 +8,8 @@ import type { PostCardProps } from './types';
 
 function PostCard(props: PostCardProps): React.ReactElement {
   /* States */
-  const { coverImage, postTitle, postDate, postCategories, postUrl } = props;
+  const { coverImage, postTitle, postDate, postCategories, postUrl, summary } =
+    props;
   const PostTagChips = useGetPostTagChip(postCategories);
 
   /* Main */
@@ -29,6 +30,7 @@ function PostCard(props: PostCardProps): React.ReactElement {
             {postDate}
           </Typography>
           <div className={cn(scopedStyles.tag_container)}>{PostTagChips}</div>
+          <div dangerouslySetInnerHTML={{ __html: summary }} />
         </div>
       </div>
     </div>
